@@ -34,7 +34,7 @@ tests \cite{Majumder:2011}. To examine the power of visual statistical inference
 
 Amazon Mechanical Turk is a very good resource for recruiting reliable survey participants for visual experiments. The web site is very nice and reliable to collect data. But to design an experiment using their web interface is a pain and often a very time consuming work. On top of that their technical support is not in the expected level. So, to run the turk experiment we felt the necessity for a well customized web site.
 
-\section{Website to Run the Turk Experiment} We developed a web site to run the Amazon Mechanical Turk experiments. We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allow us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site. 
+
 
 \section{Experimental Design} \label{sec:exp_design}
 
@@ -59,6 +59,8 @@ Amazon Mechanical Turk is a very good resource for recruiting reliable survey pa
 {\bf Closeness of estimated parameters:} When we simulate a data set from the model of interest and again fit the same model with the data set we do not get the parameters estimates same as what we fixed while simulation. It depends on what the standard errors of the parameter estimates are. In our experimental setting we some times have very different estimates for small parameter values(such as one may get estimated value of 0.5 for true $\beta=3$). In this approach we pick the data set that shows most close estimates of parameters compared to true parameter values.\\
 
 All of these three approaches discussed above has some problems. Kolmogorov method does not necessarily make sure that estimated parameters are close to the true parameters. On the other hand closeness of estimated parameters does not make sure that p value is small enough when we should reject the null hypothesis. Only the quantiles approach seems reasonable as it has much control over p-values and it gives similar data sets that has closest parameter estimates. So we used the quantiles of p-value approach in chapter \ref{ch:regression} to obtain three replicated sample of observed data sets for a particular parameter settings.\\
+
+\section{Website to Run the Turk Experiment} We developed a web site to run the Amazon Mechanical Turk experiments. We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allow us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site. 
 
 \subsection{Data collection} To collect the survey data we developed a web site that shows a plot to an individual and get feedback from that individual. Each individual is asked to provide feedback for at least 10 different plots. The 10 plots that are shown to an individual are randomly chosen with probability proportional to the number of responses required (the sample size) for that plot.
 
@@ -163,6 +165,8 @@ Thus we have the expected regression sum of squares $SSR =  (n-1)(\sigma^2+\beta
 
 
 \section{Performance} In this section we intend to analyze the performance of the experiments we did using Amazon Mechanical turk. We have feed back data for the similar plots from both turk workers as well as from the people who regularly participates in the graphics group meeting of our department. We consider later participants as more knowledgeable and trained in seeing pattern in statistical plots. We can use these data to evaluate the performance of the general participants from around the world.
+
+\section{Cleaning data}
 
 \section{Selection Bias} Since data are collected through web interface it is possible to have the selection bias in the turk experiment we did. In this section we intend to analyze to what extent this selection bias has occurred and how we can adjust for this.
 
