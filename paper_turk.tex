@@ -2,6 +2,7 @@
 
 %\usepackage{amsmath, amssymb, fullpage, amsthm, array, algorithm2e,graphicx}
 \usepackage{graphicx}
+\usepackage{url}
 
 \graphicspath{{images/}}
 
@@ -9,10 +10,10 @@
 \setlength{\evensidemargin}{0in}
 \setlength{\textwidth}{6.5in}
 %\setlength{\topmargin}{-0.4in}
-\setlength{\textheight}{9in}
+\setlength{\textheight}{8in}
 
 
-\title{Turk Experiments for Visual Inference}
+\title{Designing Turk Experiments for Visual Statistical Inference}
 \author{Mahbubul Majumder, Heike Hofmann, Dianne Cook\\
         Department of Statistics, Iowa State University}
 
@@ -24,16 +25,25 @@
 
 \begin {abstract} 
 
-It has been found that the visual test, which does not have distributional assumptions, has the power comparable to the classical
-tests \cite{Majumder:2011}. To examine the power of visual statistical inference we recruited human subjects from Amazon Mechanical Turk \cite{turk} for evaluating lineups \cite{buja:2009, Majumder:2011}. The Turk website is designed to recruit workers for simple and easy tasks. Even though the task of evaluating lineups is easy, the technical design of the experiment is complex and the tools available to design this from Turk website is just too simple. In this paper we present how we deal with this trouble and conduct our experiment.
+It has been found that the visual test, which does not have distributional assumptions, has the power comparable to the conventional tests \cite{Majumder:2011}. To examine the power of visual statistical inference we recruited human subjects from Amazon Mechanical Turk \cite{turk} for evaluating lineups \cite{buja:2009, Majumder:2011}. The Turk website is designed to recruit workers for simple and easy tasks. Even though the task of evaluating lineups is easy, the technical design of the experiment is complex and the tools available to design this from Turk website is just too simple. In this paper we present how we deal with this trouble and conduct our experiment.
 
 \end {abstract}
 
 
 \section{Introduction} 
 
-Amazon Mechanical Turk is a very good resource for recruiting reliable survey participants for visual experiments. The web site is very nice and reliable to collect data. But to design an experiment using their web interface is a pain and often a very time consuming work. On top of that their technical support is not in the expected level. So, to run the turk experiment we felt the necessity for a well customized web site.
+We have seen some advancement in visual statistical inference since it was first introduced by Buja \cite{buja:2009} where they have introduced formal methods for testing the significance of findings using lineup protocols. The power of visual statistical inference or lineup protocol is studied by Majumder \cite{Majumder:2011} and it is revealed that power could be as good as conventional test. But where the conventional test does not exists, visual inference could be only inferential procedure without compromising a lot in power. The effect of different graphical design while selecting visual test statistic is studied by Heike \cite{heike:2012}.
 
+Even though under some situation it is possible to obtain the power of visual inference theoretically \cite{Majumder:2011},  it is hard to obtain power explicitly with a mathematical formula since it is very much dependent on individual observation. One approach to estimate the power is to recruit observers to evaluate lineups obtained in known controlled situation \cite{Majumder:2011}. It is better to get observers as diverse as possible without being much concerned about the observers formal training about statistical graphics.
+
+Amazon Mechanical Turk web site \cite{turk} is a very good resource for recruiting reliable survey participants for visual experiments. The web site is very convenient and reliable to collect simple experiment data. But to design a complex experiment like what we need using their web interface is a pain and often a very time consuming work. So, to run the turk experiment we felt the necessity for a well customized web site. The work flow design of such a mechanism is shown in figure \ref{fig:turk_work_flow}. The plan is to forward turk workers to a well customized web site while payment could be processed from turk web site. This facilitates getting data directly in a local server.
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.4}{\includegraphics{turk_work_flow.pdf}}
+       \caption{Amazon Mechanical Turk workflow and data collection.}
+       \label{fig:turk_work_flow}
+\end{figure}
 
 
 \section{Experimental Design} \label{sec:exp_design}
@@ -86,6 +96,29 @@ Time taken & Time taken for each feed back\\
 \end{tabular}
 \label{tbl:data_info}
 \end{table}	
+
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.4}{\includegraphics{turk_web.png}}
+       \caption{A sample data collection form. Lineups are presented at random for evaluations by the turk workers.}
+       \label{fig:turk_web}
+\end{figure}
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.4}{\includegraphics{turk_web_feedback.png}}
+       \caption{The turk workers are given feedbacks whether their evaluation for each lineup was correct or not. This works as an incentive for the worker to work more enthusiastically. To ensure the payment, the turk workers have to provide some information using this form.}
+       \label{fig:turk_web_feedback}
+\end{figure}
+
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.4}{\includegraphics{turk_database_design.pdf}}
+       \caption{Database design for Turk experiment data collection. The same database can be used for multiple turk experiments by keeping experiment information in picture details table which contains information about the lineups.}
+       \label{fig:turk_database_design}
+\end{figure}
 
 \section{Payment of Turk Worker} Turk workers are usually small payee workers. There several issues related to the payment of their effort. These are briefly discussed in the following section and we intend to work more on this as we progress through this dissertation work. 
 
@@ -166,15 +199,63 @@ Thus we have the expected regression sum of squares $SSR =  (n-1)(\sigma^2+\beta
 
 \section{Performance} In this section we intend to analyze the performance of the experiments we did using Amazon Mechanical turk. We have feed back data for the similar plots from both turk workers as well as from the people who regularly participates in the graphics group meeting of our department. We consider later participants as more knowledgeable and trained in seeing pattern in statistical plots. We can use these data to evaluate the performance of the general participants from around the world.
 
-\section{Cleaning data}
+\section{Quality of Turk Data}
 
-\section{Selection Bias} Since data are collected through web interface it is possible to have the selection bias in the turk experiment we did. In this section we intend to analyze to what extent this selection bias has occurred and how we can adjust for this.
+\subsection{Data Cleaning}
 
+\subsection{Diversity in the Data}
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.5}{\includegraphics{turker_country.pdf}}
+       \scalebox{.5}{\includegraphics{turker_location.pdf}}       
+       \caption{The location of turk workers on the world map shows the geographical diversity of turk workers even though most of the workers come from India and United States.}
+       \label{fig:rsq}
+\end{figure}
+
+\subsection{Selection Bias} Since data are collected through web interface it is possible to have the selection bias in the turk experiment we did. In this section we intend to analyze to what extent this selection bias has occurred and how we can adjust for this.
+
+
+\section{Conclusion}
 
 \bibliographystyle{plain}
 \bibliography{references} 
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
