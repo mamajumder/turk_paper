@@ -70,9 +70,9 @@ As shown in figure \ref{fig:turk_work_flow} turk workers have to visit the exper
 
 {\bf Closeness of estimated parameters:} When we simulate a data set from the model of interest and again fit the same model with the data set we do not get the parameters estimates same as what we fixed while simulation. It depends on what the standard errors of the parameter estimates are. In our experimental setting we some times have very different estimates for small parameter values(such as one may get estimated value of 0.5 for true $\beta=3$). In this approach we pick the data set that shows most close estimates of parameters compared to true parameter values.\\
 
-All of these three approaches discussed above has some problems. Kolmogorov method does not necessarily make sure that estimated parameters are close to the true parameters. On the other hand closeness of estimated parameters does not make sure that p value is small enough when we should reject the null hypothesis. Only the quantiles approach seems reasonable as it has much control over p-values and it gives similar data sets that has closest parameter estimates. So we used the quantiles of p-value approach in chapter \ref{ch:regression} to obtain three replicated sample of observed data sets for a particular parameter settings.\\
+All of these three approaches discussed above has some problems. Kolmogorov method does not necessarily make sure that estimated parameters are close to the true parameters. On the other hand closeness of estimated parameters does not make sure that p value is small enough when we should reject the null hypothesis. Only the quantiles approach seems reasonable as it has much control over p-values and it gives similar data sets that has closest parameter estimates. So we used the quantiles of p-value approach in section \ref{sec:simulate_plot} to obtain three replicated sample of observed data sets for a particular parameter settings.\\
 
-\section{Website to Run the Turk Experiment} We developed a web site to run the Amazon Mechanical Turk experiments. We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allow us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site. 
+\section{Website to Run the Turk Experiment} We developed a web site to run the Amazon Mechanical Turk experiments.  PHP scripting language is used and embedded with HTML for designing the web site. Javascript is used for validating the input data and producing warning message.  We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allowed us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site to transfer data to our server. 
 
 \subsection{Data collection} To collect the survey data we developed a web site that shows a plot to an individual and get feedback from that individual. Each individual is asked to provide feedback for at least 10 different plots. The 10 plots that are shown to an individual are randomly chosen with probability proportional to the number of responses required (the sample size) for that plot.
 
@@ -100,12 +100,27 @@ Time taken & Time taken for each feed back\\
 \end{table}	
 
 
+\subsection{Data collection sequence} Once turk users are directed to our web site, they can see the detailed explanation on how they can perform the task of evaluation. Some simple examples are displayed along with correct responses. The users have options to try some test lineups before going for the actual experiment. But before that they have to provide the informed consent as per IRB requirement. The flow chart for this is shown in Figure \ref{fig:turk_data_flow}
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.4}{\includegraphics{turk_data_flow.png}}
+       \caption{Data collection work flow. Turk worker can try some test lineups before going to the live experiment after providing informed consent.}
+       \label{fig:turk_data_flow}
+\end{figure}
+
+Two web forms are designed to collect information from the turk users. The first form shown in Figure \ref{fig:turk_web} collects feedback information about a single lineup. The information collected through this form is all about the lineup that includes plot number selected, reasons for selection and the confidence level of the selection. Each turk user is identified by the nick name which is mainly the turk ID. 
+
+Each turk user is shown some specific number of lineups for evaluation. These lineups are randomly selected from a pool of lineups designed for evaluations. The algorithm for how the lineups should be selected to show and what would be the order of display is implemented in the form shown in Figure \ref{fig:turk_web}. Also there is a check for invalid information which is implemented using javascript. If users try to go forward without giving any feedback they are not allowed to do that showing a warning message.
+
 \begin{figure}[hbtp]
    \centering
        \scalebox{.4}{\includegraphics{turk_web.png}}
        \caption{A sample data collection form. Lineups are presented at random for evaluations by the turk workers.}
        \label{fig:turk_web}
 \end{figure}
+
+After the evaluation is recorded on a lineup through form shown in Figure \ref{fig:turk_web} another form shown in Figure \ref{fig:turk_web_feedback} is used to give feedback to the turk users whether they correctly identifies the true plot and how many evaluations are recorded from the users. This form is also used to collect demographic and educational information about the user. After the required number of evaluations are obtained from each turk user, a pass code is given as a proof of the completion of the task which then later used for payment purpose.
 
 \begin{figure}[hbtp]
    \centering
@@ -114,6 +129,7 @@ Time taken & Time taken for each feed back\\
        \label{fig:turk_web_feedback}
 \end{figure}
 
+\subsection{Database design} The design of the database to store the collected data is shown in Figure \ref{fig:turk_database_design}. It is designed such a way that data from many different experiments can be stored in the same database. In total five separate tables are used. Table turk\_worker contains static information about each turk worker. The location information of each turk worker is stored in ip\_detals table. The information in this table is collected later based on the ip address of each turk worker. Table picture\_delais contains the static information about each lineup. Table feedback is a dynamic table that grows with the number of feedbacks from each turk user. The multiple activities of each turk user are recorded in turk\_activity table. This table also contains the codes provided to the user once they finish the experiment. For our web site we used MySQL database located on a local server.
 
 \begin{figure}[hbtp]
    \centering
