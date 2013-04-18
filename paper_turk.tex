@@ -34,9 +34,9 @@ It has been found that the visual statistical inference \cite{buja:2009}, which 
 
 We have seen some advancement in visual statistical inference since it was first introduced by Buja \cite{buja:2009} where they have introduced formal methods for testing the significance of findings using lineup protocols. The power of visual statistical inference or lineup protocol is studied by Majumder \cite{Majumder:2011} and it is revealed that power could be as good as conventional test. But where the conventional test does not exists, visual inference could be only inferential procedure without compromising a lot in power. The effect of different graphical design while selecting visual test statistic is studied by Heike \cite{heike:2012}.
 
-Even though under some situation it is possible to obtain the power of visual inference theoretically \cite{Majumder:2011},  it is hard to obtain power explicitly with a mathematical formula since it is very much dependent on individual observation. One approach to estimate the power is to recruit observers to evaluate lineups obtained in known controlled situation \cite{Majumder:2011}. It is better to get observers as diverse as possible without being much concerned about the observers formal training about statistical graphics.
+Even though under some situation it is possible to obtain the power of visual inference theoretically \cite{Majumder:2011},  it is hard to obtain power explicitly with a mathematical formula since it is very much dependent on individual observation. One approach to estimate the power is to recruit observers to evaluate lineups obtained in known controlled situation \cite{Majumder:2011}. It is better to get observers as diverse as possible without being much concerned about the observers' formal training about statistical graphics.
 
-Amazon Mechanical Turk web site \cite{turk} is a very good resource for recruiting reliable survey participants for visual experiments. The web site is very convenient and reliable to collect simple experiment data. But to design a complex experiment like what we need using their web interface is a pain and often a very time consuming work. So, to run the turk experiment we felt the necessity for a well customized web site where the lineups presented to the observers could be easily controlled according to the experimental design. The work flow design of such a mechanism is shown in figure \ref{fig:turk_work_flow}. The plan is to forward turk workers to a well customized web site while payment could be processed from turk web site. This facilitates getting data directly in a local server.
+Amazon Mechanical Turk web site \cite{turk} is a very good resource for recruiting reliable survey participants for visual experiments. This is the place where people come to work online and get paid. The web site is very convenient and reliable to collect simple experiment data. But to design a complex experiment like what we need using their web interface is a pain and often a very time consuming work. So, to run the turk experiment we felt the necessity for a well customized web site where the lineups presented to the observers could be easily controlled according to the experimental design. The work flow design of such a mechanism is shown in figure \ref{fig:turk_work_flow}. The plan is to forward turk workers to a well customized web site while payment could be processed from turk web site. This facilitates getting data directly in a local server.
 
 As shown in figure \ref{fig:turk_work_flow} turk workers have to visit the experimental web site and give their consent to participate the survey as per IRB requirement. In the experimental web, there is a option for observers to try some sample lineups to get familiar with the experiment. Once the observers start evaluating the lineups they are sequentially shown a specific number of lineups and at the end they are given a code as a proof for their tusk completion. The payment of the turk worker is processed if they post the code they got from experimental web site. The observers are also asked to provide some demographic information about them to make sure that the code is generated.
 
@@ -139,6 +139,34 @@ After the evaluation is recorded on a lineup through form shown in Figure \ref{f
 \end{figure}
 
 \section{Payment of Turk Worker} Turk workers are usually small payee workers. There several issues related to the payment of their effort. These are briefly discussed in the following section and we intend to work more on this as we progress through this dissertation work. 
+
+
+\begin{table}[hbtp]
+\caption{Number of task submitted by the turk workers, number of task got rejected and total task completion time for each of the different experiment indicate the performance of turk workers. Majority of the tasks are rejected for boxplot experiment and the payment per task was the lowest for this experiment.}
+\centering 
+\begin{tabular}{clccccc} 
+\hline
+Experiment &  Plot & Submitted & Rejected & Duration & Pay/Task \\ %[0.5ex] % inserts table %heading 
+\hline
+1 & Boxplot & 406 & 106 & 527340 & 0.5\\
+2 & Scatterplot & 359 & 9 & 153660 & 1\\
+3 & Contaminated plot & 219 & 19 & 454200 & 1\\
+4 & Polar vs Cartesian & 110 & 10 & 41940 &1\\
+5 & Hist vs density & 234 & 37 & 149640 & 1\\
+6 & Violine vs boxplot & 417 & 17 & 381120 &1 \\
+7 & Group separation & 106 & 6 & 18540 &1\\
+8 & Sine Illusion & 101 & 1 & 282180 &1\\
+\hline
+\end{tabular}
+\label{tbl:worker_performance}
+\end{table}	
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.6}{\includegraphics{rejected_task.pdf}}
+       \caption{Percentage of rejected task for various experimental plot type.}
+       \label{fig:rejected_task}
+\end{figure}
 
 \subsection{Wage Rate for the Turkers}Amazon Mechanical Turk suggest that each worker gets \$6/hour as wage. Thus we need to estimate how much time a tusk may take to complete and based on that we have to specify the payment for each task. Our experience indicates that a better payment lures more serious workers who usually provide cleaner data which is more reliable. We may study this issue while we do multiple turk experiments.
 
