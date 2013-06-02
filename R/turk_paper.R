@@ -11,7 +11,7 @@ turk.dat$percent_rejected <- with(turk.dat, rejected*100/submitted)
 ggplot(turk.dat, aes(x = factor(plot, levels=plot[order(percent_rejected)]), y=percent_rejected))+
   geom_bar(stat="identity") + xlab("Experimental plot type") +
   coord_flip() + ylab("Percentage of rejected task")
-
+ggsave("../images/rejected_task.pdf", width=6, height=4)
 
 # plotting the ip locations in the world map
 

@@ -36,6 +36,18 @@ We have seen some advancement in visual statistical inference since it was first
 
 Even though under some situation it is possible to obtain the power of visual inference theoretically \cite{Majumder:2011},  it is hard to obtain power explicitly with a mathematical formula since it is very much dependent on individual observation. One approach to estimate the power is to recruit observers to evaluate lineups obtained in known controlled situation \cite{Majumder:2011}. It is better to get observers as diverse as possible without being much concerned about the observers' formal training about statistical graphics.
 
+
+Figure \ref{fig:amazon_task} displays an example of such a task taken from their web site. In this task a worker just has to select from a pool of options and submit the task. The instructions are usually accompany the task and they are very simple and easy to follow. 
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=5in]{amazon_task.pdf} 
+   \caption{An example of amazon mechanical turk task. Tasks are usually very simple and designed for human evaluations. With each task, simple instructions are given for workers to follow. The workers first accept the task before submitting their response.}
+   \label{fig:amazon_task}
+\end{figure}
+
+
+
 Amazon Mechanical Turk web site \cite{turk} is a very good resource for recruiting reliable survey participants for visual experiments. This is the place where people come to work online and get paid. The web site is very convenient and reliable to collect simple experiment data. But to design a complex experiment like what we need using their web interface is a pain and often a very time consuming work. So, to run the turk experiment we felt the necessity for a well customized web site where the lineups presented to the observers could be easily controlled according to the experimental design. The work flow design of such a mechanism is shown in figure \ref{fig:turk_work_flow}. The plan is to forward turk workers to a well customized web site while payment could be processed from turk web site. This facilitates getting data directly in a local server.
 
 As shown in figure \ref{fig:turk_work_flow} turk workers have to visit the experimental web site and give their consent to participate the survey as per IRB requirement. In the experimental web, there is a option for observers to try some sample lineups to get familiar with the experiment. Once the observers start evaluating the lineups they are sequentially shown a specific number of lineups and at the end they are given a code as a proof for their tusk completion. The payment of the turk worker is processed if they post the code they got from experimental web site. The observers are also asked to provide some demographic information about them to make sure that the code is generated.
