@@ -105,7 +105,44 @@ As shown in figure \ref{fig:turk_work_flow} turk workers have to visit the exper
 
 All of these three approaches discussed above has some problems. Kolmogorov method does not necessarily make sure that estimated parameters are close to the true parameters. On the other hand closeness of estimated parameters does not make sure that p value is small enough when we should reject the null hypothesis. Only the quantiles approach seems reasonable as it has much control over p-values and it gives similar data sets that has closest parameter estimates. So we used the quantiles of p-value approach in section \ref{sec:simulate_plot} to obtain three replicated sample of observed data sets for a particular parameter settings.\\
 
+\subsection{Test and Training Lineup} How many test lineup?
+
+How to setup training, randomized or sequential selection of lineup for training.
+
+Example lineup on the homepage should be of size three or four so that more than one lineup can be placed on the homepage.
+
+\subsection{Planing the Turk Task}
+Question to ask
+
+Whether reasoning would be collected or not
+
+Multiple or single response
+
+Test plot added or not
+
+Training needed or not
+
+Feedback given after every evaluation or not
+
+How many lineups to show
+
+Are the lineups randomly selected?
+
+ 
+
+
 \section{Web Application for Turk Experiment} We developed a web site to run the Amazon Mechanical Turk experiments.  PHP scripting language is used and embedded with HTML for designing the web site. Javascript is used for validating the input data and producing warning message.  We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allowed us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site to transfer data to our server. 
+
+\subsection{Form Design}
+
+\subsection{Database design} The design of the database to store the collected data is shown in Figure \ref{fig:turk_database_design}. It is designed such a way that data from many different experiments can be stored in the same database. In total five separate tables are used. Table turk\_worker contains static information about each turk worker. The location information of each turk worker is stored in ip\_detals table. The information in this table is collected later based on the ip address of each turk worker. Table picture\_delais contains the static information about each lineup. Table feedback is a dynamic table that grows with the number of feedbacks from each turk user. The multiple activities of each turk user are recorded in turk\_activity table. This table also contains the codes provided to the user once they finish the experiment. For our web site we used MySQL database located on a local server.
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.4}{\includegraphics{turk_database_design.pdf}}
+       \caption{Database design for Turk experiment data collection. The same database can be used for multiple turk experiments by keeping experiment information in picture details table which contains information about the lineups.}
+       \label{fig:turk_database_design}
+\end{figure}
 
 \subsection{Data collection} To collect the survey data we developed a web site that shows a plot to an individual and get feedback from that individual. Each individual is asked to provide feedback for at least 10 different plots. The 10 plots that are shown to an individual are randomly chosen with probability proportional to the number of responses required (the sample size) for that plot.
 
@@ -162,16 +199,26 @@ After the evaluation is recorded on a lineup through form shown in Figure \ref{f
        \label{fig:turk_web_feedback}
 \end{figure}
 
-\subsection{Database design} The design of the database to store the collected data is shown in Figure \ref{fig:turk_database_design}. It is designed such a way that data from many different experiments can be stored in the same database. In total five separate tables are used. Table turk\_worker contains static information about each turk worker. The location information of each turk worker is stored in ip\_detals table. The information in this table is collected later based on the ip address of each turk worker. Table picture\_delais contains the static information about each lineup. Table feedback is a dynamic table that grows with the number of feedbacks from each turk user. The multiple activities of each turk user are recorded in turk\_activity table. This table also contains the codes provided to the user once they finish the experiment. For our web site we used MySQL database located on a local server.
+\subsection{Data Security and Validity} Consideration to avoid hacking
 
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.4}{\includegraphics{turk_database_design.pdf}}
-       \caption{Database design for Turk experiment data collection. The same database can be used for multiple turk experiments by keeping experiment information in picture details table which contains information about the lineups.}
-       \label{fig:turk_database_design}
-\end{figure}
+Check for invalid input
+
+Control for missing imput
 
 \section{Managing Turk Task} Turk workers are usually small payee workers. There several issues related to the payment of their effort. These are briefly discussed in the following section and we intend to work more on this as we progress through this dissertation work. 
+
+\subsection{Creating Task for Lineup Evaluation} Task description, number of people to recruit, time allowed to finish the task, specify the qualification needed, setting the duration of the task, offering the pay per task.
+
+\subsection{Accepting or Rejecting the Task} In our design we keep a test lineup plot which is very easy to evaluate. The general criteria may be to reject payment when workers do not get that easy test lineup plot. Our experience suggest that there are workers who did not get that test plot but their overall success rate is very high. So depending on only one criteria the payment should not be made. These issues would be addressed in our future work based on the several turk experiments that we intend to carry out.
+
+\subsection{Processing Payment}Amazon Mechanical Turk suggest that each worker gets \$6/hour as wage. Thus we need to estimate how much time a tusk may take to complete and based on that we have to specify the payment for each task. Our experience indicates that a better payment lures more serious workers who usually provide cleaner data which is more reliable. We may study this issue while we do multiple turk experiments.
+
+\subsection{Managing Worker} pay bonus, appreciate worker by sending email, block worker etc.
+
+\section{Turk Data Quality}
+
+In this section we intend to analyze the performance of the experiments we did using Amazon Mechanical turk. We have feed back data for the similar plots from both turk workers as well as from the people who regularly participates in the graphics group meeting of our department. We consider later participants as more knowledgeable and trained in seeing pattern in statistical plots. We can use these data to evaluate the performance of the general participants from around the world.
+
 
 
 \begin{table}[hbtp]
@@ -207,12 +254,34 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
    \label{fig:task_duration}
 \end{figure}
 
-\subsection{Wage Rate for the Turkers}Amazon Mechanical Turk suggest that each worker gets \$6/hour as wage. Thus we need to estimate how much time a tusk may take to complete and based on that we have to specify the payment for each task. Our experience indicates that a better payment lures more serious workers who usually provide cleaner data which is more reliable. We may study this issue while we do multiple turk experiments.
 
-\subsection{Accepting or Rejecting Payments for Turk Evaluation} In our design we keep a test lineup plot which is very easy to evaluate. The general criteria may be to reject payment when workers do not get that easy test lineup plot. Our experience suggest that there are workers who did not get that test plot but their overall success rate is very high. So depending on only one criteria the payment should not be made. These issues would be addressed in our future work based on the several turk experiments that we intend to carry out.
+\subsection{Data Cleaning}
+
+\subsection{Diversity in the Data}
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.5}{\includegraphics{turker_country.pdf}}
+       \scalebox{.5}{\includegraphics{turker_location.pdf}}       
+       \caption{The location of turk workers on the world map shows the geographical diversity of turk workers even though most of the workers come from India and United States.}
+       \label{fig:rsq}
+\end{figure}
+
+\subsection{Selection Bias} Since data are collected through web interface it is possible to have the selection bias in the turk experiment we did. In this section we intend to analyze to what extent this selection bias has occurred and how we can adjust for this.
 
 
-\section{What do people pick, $R^2$ or p-value?} What do people pick in a lineup plot, p-value or $R^2$? To address this issue we obtain the approximate theoretical relationship between $R^2$ and the power of the classical hypothesis test. Suppose we want to test the significance of the slope ( i.e.,  $H_0: \beta=0$ against $\beta \ne 0$) of a continuous covariate $X$ in  a simple linear regression model setting. Also consider $X \sim N(0,1)$. For a sample of size $n$ this gives us 
+Time of the task may recruit from a specific geographical location
+
+Setting up qualification may allow certain workers to do the task
+
+Payment amount may affect the duration of the experiment which may avoid diversity in the geographical locations.
+
+
+\section{Conclusion}
+
+
+
+\section{Appendix: What do Turk Workers Pick, $R^2$ or $p$-value?} What do people pick in a lineup plot, p-value or $R^2$? To address this issue we obtain the approximate theoretical relationship between $R^2$ and the power of the classical hypothesis test. Suppose we want to test the significance of the slope ( i.e.,  $H_0: \beta=0$ against $\beta \ne 0$) of a continuous covariate $X$ in  a simple linear regression model setting. Also consider $X \sim N(0,1)$. For a sample of size $n$ this gives us 
 \begin{eqnarray*}
 Y_i-\bar{Y}& = & \beta_0+\beta_1X_i+\epsilon_i - \beta_0 - \beta_1 \bar{X}- \bar{\epsilon} \\
           & = & \beta_1(X_i-\bar{X})+(\epsilon_i-\bar{\epsilon})
@@ -282,26 +351,7 @@ Thus we have the expected regression sum of squares $SSR =  (n-1)(\sigma^2+\beta
 \end{figure}
 
 
-\section{Performance} In this section we intend to analyze the performance of the experiments we did using Amazon Mechanical turk. We have feed back data for the similar plots from both turk workers as well as from the people who regularly participates in the graphics group meeting of our department. We consider later participants as more knowledgeable and trained in seeing pattern in statistical plots. We can use these data to evaluate the performance of the general participants from around the world.
 
-\section{Quality of Turk Data}
-
-\subsection{Data Cleaning}
-
-\subsection{Diversity in the Data}
-
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.5}{\includegraphics{turker_country.pdf}}
-       \scalebox{.5}{\includegraphics{turker_location.pdf}}       
-       \caption{The location of turk workers on the world map shows the geographical diversity of turk workers even though most of the workers come from India and United States.}
-       \label{fig:rsq}
-\end{figure}
-
-\subsection{Selection Bias} Since data are collected through web interface it is possible to have the selection bias in the turk experiment we did. In this section we intend to analyze to what extent this selection bias has occurred and how we can adjust for this.
-
-
-\section{Conclusion}
 
 \bibliographystyle{plain}
 \bibliography{references} 
