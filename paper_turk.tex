@@ -83,7 +83,7 @@ It is very fast, cheap and reliable to recruit people from MTurk. Thats why it i
 
 Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} performed the same study using MTurk and demonstrated that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
 
-Figure \ref{fig:amazon_task} shows how simple an MTurk task could be. It is possible to get a lineup evaluated by creating such a simple task. We just need to replace the picture in Figure \ref{fig:amazon_task} with the lineup in Figure \ref{fig:lineup_turk} and change the answering options. But some times we may need more than one lineups to be evaluated by an observer. There could be many lineups from which a small number lineups needs to be shown to an observer. All these could be done by creating a web application. For additional control we plan to separate this application from MTurk system. The following section discuss this in details.
+Figure \ref{fig:amazon_task} shows how simple an MTurk task could be. It is possible to get a lineup evaluated by creating such a simple task. We just need to replace the picture in Figure \ref{fig:amazon_task} with the lineup in Figure \ref{fig:lineup_turk} and change the answering options. But some times we may need more than one lineups to be evaluated by an observer. There could be many lineups from which a small number lineups needs to be shown to an observer. It is convenient if the lineup is clickable so that selection of plot can be made by mouse click. All these could be done by creating a web application. For additional control we plan to separate this application from MTurk system. The following section discuss this in details.
 
 
 
@@ -103,6 +103,8 @@ As shown in figure \ref{fig:turk_work_flow} turk workers have to visit the exper
        \caption{Amazon Mechanical Turk workflow and data collection.}
        \label{fig:turk_work_flow}
 \end{figure}
+
+This paper is organized as follows. Section \ref{sec:turk_exp} presents the details description of an experiment and things to consider before a turk experiment. Section \ref{sec:web_application} presents the design of an web application to get lineups evaluated with additional flexibilities and options that may not possible through MTurk. Section \ref{sec:turk_task} describes how to create a MTurk task, mange workers and process payments. Finally Section \ref{sec:turk_data} presents some data obtained from various experiments done through the proposed web application and discusses about the quality of the data.
 
 
 \section{Experimental Design} \label{sec:turk_exp}
@@ -155,7 +157,9 @@ Are the lineups randomly selected?
  
 
 
-\section{Web Application for Turk Experiment} We developed a web site to run the Amazon Mechanical Turk experiments.  PHP scripting language is used and embedded with HTML for designing the web site. Javascript is used for validating the input data and producing warning message.  We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allowed us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site to transfer data to our server. 
+\section{Web Application for Turk Experiment} \label{sec:web_application}
+
+We developed a web site to run the Amazon Mechanical Turk experiments.  PHP scripting language is used and embedded with HTML for designing the web site. Javascript is used for validating the input data and producing warning message.  We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allowed us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site to transfer data to our server. 
 
 \subsection{Form Design}
 
@@ -229,7 +233,10 @@ Check for invalid input
 
 Control for missing imput
 
-\section{Managing Turk Task} Turk workers are usually small payee workers. There several issues related to the payment of their effort. These are briefly discussed in the following section and we intend to work more on this as we progress through this dissertation work. 
+
+\section{Managing Turk Task}\label{sec:turk_task}  
+
+Turk workers are usually small payee workers. There several issues related to the payment of their effort. These are briefly discussed in the following section and we intend to work more on this as we progress through this dissertation work. 
 
 \subsection{Creating Task for Lineup Evaluation} Task description, number of people to recruit, time allowed to finish the task, specify the qualification needed, setting the duration of the task, offering the pay per task.
 
@@ -239,7 +246,7 @@ Control for missing imput
 
 \subsection{Managing Worker} pay bonus, appreciate worker by sending email, block worker etc.
 
-\section{Turk Data Quality}
+\section{Turk Data Quality} \label{sec:turk_data}
 
 In this section we intend to analyze the performance of the experiments we did using Amazon Mechanical turk. We have feed back data for the similar plots from both turk workers as well as from the people who regularly participates in the graphics group meeting of our department. We consider later participants as more knowledgeable and trained in seeing pattern in statistical plots. We can use these data to evaluate the performance of the general participants from around the world.
 
