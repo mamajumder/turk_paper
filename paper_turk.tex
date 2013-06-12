@@ -36,9 +36,19 @@ Human observers are needed to evaluate lineups that are used to test the signifi
 
 \section{Introduction} 
 
-There have been some advancements in visual statistical inference since it was first introduced by Buja \cite{buja:2009} where they have proposed formal methods for testing the significance of findings using lineup protocols. In visual statistical inference the test statistics is a plot of the observed data. This plot is placed randomly in a layout of plots called lineup. The rest of the plots in the lineups are generated from the model specified by the null hypothesis. A human observer is then asked to evaluate the lineup. If the observer detects the actual plot in the lineup, the null hypothesis is rejected.
+There have been some advancements in visual statistical inference since it was first introduced by Buja \cite{buja:2009} where they have proposed formal methods for testing the significance of findings using lineup protocols. In visual statistical inference the test statistics is a plot of the observed data. This plot is placed randomly in a layout of plots called lineup. The rest of the plots in the lineups are generated from the model specified by the null hypothesis. A human observer is asked to evaluate the lineup. If the observer detects the actual plot in the lineup, the null hypothesis is rejected. 
 
-The power of visual test is studied by \cite{majumder:2013} and it is revealed that power could be as good as conventional test and some times even better. But where the conventional test does not exists, visual inference could be the only inferential procedure without compromising a lot in power. 
+A lineup is shown in Figure~\ref{fig:lineup_turk} where the observed scatterplot is displayed with a least square line overlaid. Can you find which of these plots show the steepest slope? The rest of the plots or the null plots are generated based on the hypothesis that the slope is zero. If the observed scatterplot is detected that indicates that observed plot is different from null plot and hence the null hypothesis is rejected.
+
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[width=6.5in]{plot_turk2_100_450_12_3.png} 
+   \caption{A lineup of 20 plots. Which of these plots shows the steepest slope?.}
+   \label{fig:lineup_turk}
+\end{figure}
+
+
+The power of visual test is studied by \cite{majumder:2013} and it is revealed that power could be as good as conventional test and in some scenerios even better. But where the conventional test does not exists, visual inference could be the only inferential procedure without compromising a lot in power. 
 
 These developments open up a whole new area of statistical research where lineups need to be evaluated by human observer. There are some reasons a researcher needs to evaluate lineups. One is to assess the power of the visual test \citep{heike:2012} for different visual test statistics. The another reason would be to make decision based on the lineup, i.e., to use lineup protocol in practical application \citep{niladri:2012}. Other reasons could be to present the results of the conventional test with visual tools such as lineup.  
 
@@ -48,13 +58,14 @@ These developments open up a whole new area of statistical research where lineup
 
 The power of visual test can be obtained theoretically under some assumptions on individual behavior which was evident from experimental studies \citep{majumder:2013}. In general it is hard to obtain explicitly with a mathematical formula since it is very much dependent on individual observation. One approach to estimate the power is to recruit observers to evaluate lineups obtained in known controlled situation. Individual differences in the abilities of correct evaluations of lineup were observed. But Observer's education levels do not seem to have significant effect on performances. Thus it is better to get observers as diverse as possible without being much concerned about the observers' formal training about statistical graphics.
 
-This poses a new challenge to researcher to recruit people from a diverse pool of population. Cost, time, data accuracies and convenience are some of the issues that need to be dealt with. Moreover, those who need to make statistical decision based on lineup plot will need a system that could provide an easy solution to this challenge.  This paper provides a complete solution to this by presenting plans for experimental design, developing an web application to recruit people from Amazon Mechanical Turk (MTurk) web site and providing detailed task management while doing an experiment through MTurk.  
+This poses a new challenge to researcher to recruit people from a diverse pool of population. Cost, time, data qualities and convenience are some of the issues that need to be dealt with. Moreover, those who need to make statistical decision based on lineup plot will need a system that could provide an easy solution to this challenge.  This paper provides a complete solution to this by presenting plans for experimental design, developing an web application to recruit people from Amazon Mechanical Turk (MTurk) web site and providing detailed task management while doing an experiment through MTurk.  
+
+Human observers were recruited to evaluate the experimental lineups through 
 
 \subsection{Amazon Mechanical Turk (MTurk)}
 
-Amazon Mechanical Turk web site \cite{turk} is a very good resource for recruiting reliable survey participants for visual experiments. This is the place where people come to work online and get paid. The web site is very convenient and reliable to collect simple experiment data. But to design a complex experiment like what we need using their web interface is a pain and often a very time consuming work. So, to run the turk experiment we felt the necessity for a well customized web site where the lineups presented to the observers could be easily controlled according to the experimental design. The work flow design of such a mechanism is shown in figure \ref{fig:turk_work_flow}. The plan is to forward turk workers to a well customized web site while payment could be processed from turk web site. This facilitates getting data directly in a local server.
+\cite{turk} Mechanical Turk  or MTurk is an online work place where people from around the world can perform some tasks and get paid. Usually tasks are very simple and no specialized training is required. Being a human is the main requirement. Tasks are designed for anyone to do but some tasks may require that workers satisfy some skill level depending on the recruiters' need. The tasks are designed such that it does not take much time to complete. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. Figure~\ref{fig:amazon_task} shows an MTurk task where an observer is asked to select from some given options based on a picture. 
 
-Figure \ref{fig:amazon_task} displays an example of such a task taken from their web site. In this task a worker just has to select from a pool of options and submit the task. The instructions are usually accompany the task and they are very simple and easy to follow. 
 
 \begin{figure}[htbp] 
    \centering
@@ -64,11 +75,21 @@ Figure \ref{fig:amazon_task} displays an example of such a task taken from their
 \end{figure}
 
 
-Human observers were recruited to evaluate the experimental lineups through Amazon Mechanical Turk \cite{turk} or MTurk Web site.  It is an online work place where people from around the world can perform some tasks and get paid. Usually tasks are very simple and no specialized training is required. Being a human is the main requirement. Tasks are designed for anyone to do but some tasks may require that workers satisfy some skill level depending on the recruiters need. The tasks are designed such that it does not take much time to complete. Humans are still better than computers in performing these types of tasks. The the amount of money paid for each task is very small as well. 
+
+
+
 
 It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
 
-Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
+Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} performed the same study using MTurk and demonstrated that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
+
+Figure \ref{fig:amazon_task} shows how simple an MTurk task could be. It is possible to get a lineup evaluated by creating such a simple task. We just need to replace the picture in Figure \ref{fig:amazon_task} with the lineup in Figure \ref{fig:lineup_turk} and change the answering options. But some times we may need more than one lineups to be evaluated by an observer. There could be many lineups from which a small number lineups needs to be shown to an observer. All these could be done by creating a web application. For additional control we plan to separate this application from MTurk system. The following section discuss this in details.
+
+
+
+%Amazon Mechanical Turk web site \cite{turk} is a very good resource for recruiting reliable survey participants for visual experiments. This is the place where people come to work online and get paid. The web site is very convenient and reliable to collect simple experiment data. But to design a complex experiment like what we need using their web interface is a pain and often a very time consuming work. So, to run the turk experiment we felt the necessity for a well customized web site where the lineups presented to the observers could be easily controlled according to the experimental design. The work flow design of such a mechanism is shown in figure \ref{fig:turk_work_flow}. The plan is to forward turk workers to a well customized web site while payment could be processed from turk web site. This facilitates getting data directly in a local server.
+
+%Figure \ref{fig:amazon_task} displays an example of such a task taken from their web site. In this task a worker just has to select from a pool of options and submit the task. The instructions are usually accompany the task and they are very simple and easy to follow. 
 
 \subsection{Getting Turk Workforce}
 
