@@ -3,6 +3,7 @@
 %\usepackage{amsmath, amssymb, fullpage, amsthm, array, algorithm2e,graphicx}
 \usepackage{graphicx}
 \usepackage{url}
+\RequirePackage{natbib}
 \usepackage[colorlinks=true, citecolor=blue, linkcolor=blue]{hyperref}
 
 \graphicspath{{images/}}
@@ -37,17 +38,17 @@ Human observers are needed to evaluate lineups that are used to test the signifi
 
 There have been some advancements in visual statistical inference since it was first introduced by Buja \cite{buja:2009} where they have proposed formal methods for testing the significance of findings using lineup protocols. In visual statistical inference the test statistics is a plot of the observed data. This plot is placed randomly in a layout of plots called lineup. The rest of the plots in the lineups are generated from the model specified by the null hypothesis. A human observer is then asked to evaluate the lineup. If the observer detects the actual plot in the lineup, the null hypothesis is rejected.
 
-The power of visual test is studied by Majumder \cite{majumder:2013} and it is revealed that power could be as good as conventional test and some times even better. But where the conventional test does not exists, visual inference could be the only inferential procedure without compromising a lot in power. 
+The power of visual test is studied by \cite{majumder:2013} and it is revealed that power could be as good as conventional test and some times even better. But where the conventional test does not exists, visual inference could be the only inferential procedure without compromising a lot in power. 
 
-These developments open up a whole new area of statistical research where lineups need to be evaluated by human observer. There are some reasons a researcher needs to evaluate lineups. One is to assess the power of the visual test \cite{heike:2012} for different visual test statistics. The another reason would be to make decision based on the lineup, i.e., to use lineup protocol in practical application \cite{niladri:2012}. Other reasons could be to present the results of the conventional test with visual tools such as lineup.  
+These developments open up a whole new area of statistical research where lineups need to be evaluated by human observer. There are some reasons a researcher needs to evaluate lineups. One is to assess the power of the visual test \citep{heike:2012} for different visual test statistics. The another reason would be to make decision based on the lineup, i.e., to use lineup protocol in practical application \citep{niladri:2012}. Other reasons could be to present the results of the conventional test with visual tools such as lineup.  
 
 
 
 %The effect of different graphical design while selecting visual test statistic is studied by Heike \cite{heike:2012}.
 
-The power of visual test can be obtained theoretically \cite{majumder:2013} under some conditions. In general it is hard to obtain explicitly with a mathematical formula since it is very much dependent on individual observation. One approach to estimate the power is to recruit observers to evaluate lineups obtained in known controlled situation \cite{majumder:2013}. It is better to get observers as diverse as possible without being much concerned about the observers' formal training about statistical graphics.
+The power of visual test can be obtained theoretically under some assumptions on individual behavior which was evident from experimental studies \citep{majumder:2013}. In general it is hard to obtain explicitly with a mathematical formula since it is very much dependent on individual observation. One approach to estimate the power is to recruit observers to evaluate lineups obtained in known controlled situation. Individual differences in the abilities of correct evaluations of lineup were observed. But Observer's education levels do not seem to have significant effect on performances. Thus it is better to get observers as diverse as possible without being much concerned about the observers' formal training about statistical graphics.
 
-
+This poses a new challenge to researcher to recruit people from a diverse pool of population. Cost, time, data accuracies and convenience are some of the issues that need to be dealt with. Moreover, those who need to make statistical decision based on lineup plot will need a system that could provide an easy solution to this challenge.  This paper provides a complete solution to this by presenting plans for experimental design, developing an web application to recruit people from Amazon Mechanical Turk (MTurk) web site and providing detailed task management while doing an experiment through MTurk.  
 
 \subsection{Amazon Mechanical Turk (MTurk)}
 
@@ -68,6 +69,8 @@ Human observers were recruited to evaluate the experimental lineups through Amaz
 It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
 
 Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} perform the same study using MTurk and demonstrate that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
+
+\subsection{Getting Turk Workforce}
 
 We designed and developed a web site which enables to display the lineups to the observers as per experimental design. The MTurk workers were redirected to the web site and the data were collected, stored automatically into a local database server. Demographic informations such as age group, gender and education levels were also collected. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. The location of the observer is determined by the ip address of the observer.
 
@@ -279,7 +282,11 @@ Payment amount may affect the duration of the experiment which may avoid diversi
 
 \section{Conclusion} This paper presents a complete solution to the problem of designing a simulation experiment for lineup and recruiting people to get the lineups evaluated. The proposed online application design provides flexibility to control how the multiple lineups would be presented to a observer. It also gives added benefit to record timing of the evaluations. Scalable Vector Graphics (SVG) is used so that observer can click on the lineup to pick certain plot. This also made the multiple plot selection from a lineup easier and convenient. Multiple online experiments are done using this web application and result suggests that the application worked as planned.
 
-The web application is designed such a way that it still produces simple task for the worker who are used to doing so from MTurk. But it gives many flexibilities to the researcher who need lineups to be evaluated as per complex experimental requirement. 
+The web application is designed such a way that it still produces simple task for the worker who are used to doing so from MTurk. But it gives many flexibilities to the researcher who need lineups to be evaluated as per complex experimental requirement. The design of this application allows recruiting people from any source not necessarily just from MTurk. Also once the application is hosted, any number of experiments can be done through this without changing the core of this application.
+
+The next direction of this work is to make a complete package so that anyone can reproduce this web application, customize according to their need and run the MTurk experiments as part of their research that involves lineups. This would save lot of time which researcher can use focusing on their actual research. This would also help lineup protocol to be used frequently since it would provide an ease of its use in making inferential decisions.
+
+We also intend to set up a web application for public use where researcher can put their lineup for online evaluation. The observer could be recruited from MTurk or any other source including local lab participants. 
 
 
 
@@ -355,8 +362,10 @@ Thus we have the expected regression sum of squares $SSR =  (n-1)(\sigma^2+\beta
 
 
 
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
+\bibliographystyle{asa}
 \bibliography{references} 
+
 
 \end{document}
 
