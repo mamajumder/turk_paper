@@ -11,8 +11,14 @@
 \setlength{\oddsidemargin}{0in}
 \setlength{\evensidemargin}{0in}
 \setlength{\textwidth}{6.5in}
-%\setlength{\topmargin}{-0.4in}
-\setlength{\textheight}{8in}
+\setlength{\topmargin}{-0.3in}
+\setlength{\textheight}{8.8in}
+
+
+%\setlength{\evensidemargin}{0.25 in}
+%\setlength{\textwidth}{6.2 in}           % allow for a little sloppiness (6.3)
+%\setlength{\topmargin}{-.30 in}           % top margin to header (was -.35)
+%\setlength{\textheight}{8.8 in} 
 
 
 \title{Designing Turk Experiments for Visual Statistical Inference}
@@ -43,7 +49,7 @@ A lineup is shown in Figure~\ref{fig:lineup_turk} where the observed scatterplot
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=6.5in]{plot_turk2_100_450_12_3.png} 
-   \caption{A lineup of 20 plots. Which of these plots shows the steepest slope?.}
+   \caption{A lineup of 20 scatter plots with least square line overlaid. Which of these plots shows the steepest slope?.}
    \label{fig:lineup_turk}
 \end{figure}
 
@@ -58,7 +64,7 @@ These developments open up a whole new area of statistical research where lineup
 
 The power of visual test can be obtained theoretically under some assumptions on individual behavior which was evident from experimental studies \citep{majumder:2013}. In general it is hard to obtain explicitly with a mathematical formula since it is very much dependent on individual observation. One approach to estimate the power is to recruit observers to evaluate lineups obtained in known controlled situation. Individual differences in the abilities of correct evaluations of lineup were observed. But Observer's education levels do not seem to have significant effect on performances. Thus it is better to get observers as diverse as possible without being much concerned about the observers' formal training about statistical graphics.
 
-This poses a new challenge to researcher to recruit people from a diverse pool of population. Cost, time, data qualities and convenience are some of the issues that need to be dealt with. Moreover, those who need to make statistical decision based on lineup plot will need a system that could provide an easy solution to this challenge.  This paper provides a complete solution to this by presenting plans for experimental design, developing an web application to recruit people from Amazon Mechanical Turk (MTurk) web site and providing detailed task management while doing an experiment through MTurk.  
+This poses a new challenge to researcher to recruit people from a diverse pool of population. Cost, time, data qualities and convenience are some of the issues that need to be dealt with. Moreover, those who need to make statistical decision based on lineup plot will need a system that can provide an easy solution to this challenge.  This paper provides a complete solution to this by presenting plans for experimental design, developing an web application to recruit people from Amazon Mechanical Turk (MTurk) web site and providing detailed task management while doing an experiment through MTurk.  
 
 Human observers were recruited to evaluate the experimental lineups through 
 
@@ -76,14 +82,11 @@ Human observers were recruited to evaluate the experimental lineups through
 
 
 
-
-
-
-It is very fast, cheap and reliable to recruit people from MTurk. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. At any point of time thousands of tasks are available for the thousands of workers around the world. 
+It is very fast, cheap and reliable to recruit people from MTurk. It allows distributing works to the thousands of workers around the world. Thats why it is getting very popular among the researchers who perform human subject experiment. The another benefit is that a very diverse pool of subjects can be recruited which is otherwise very hard to obtain for a study. The researchers can easily filter the workers based on their experimental design, such as recruiting people only from a specific geographical location or a group of people who satisfy certain criteria etc. The recruiter can decide who they pay or not. Workers have to satisfy the task requirement to ensure payment. But at the end it is the recruiter who has the final say. Usually recruiters pay promptly after the task has been done properly and thats why MTurk is very popular among the online job seeker. 
 
 Because of its convenience it is getting popular for scientific research study as well. In comparison with a lab study \cite{suri:2010} performed the same study using MTurk and demonstrated that their study results are as good as the lab study results even though MTurk study required less time and cost while provided more convenience. \cite{majumder:2013} recruited people from MTurk for their simulation study in estimating the power of visual statistical inference. They have done numerous pilot studies in lab before doing actual MTurk study and found similar results. \cite{mason:2012} explains various features of MTurk and describes how it can be used as part of human behavioral study.
 
-Figure \ref{fig:amazon_task} shows how simple an MTurk task could be. It is possible to get a lineup evaluated by creating such a simple task. We just need to replace the picture in Figure \ref{fig:amazon_task} with the lineup in Figure \ref{fig:lineup_turk} and change the answering options. But some times we may need more than one lineups to be evaluated by an observer. There could be many lineups from which a small number lineups needs to be shown to an observer. It is convenient if the lineup is clickable so that selection of plot can be made by mouse click. All these could be done by creating a web application. For additional control we plan to separate this application from MTurk system. The following section discuss this in details.
+Figure \ref{fig:amazon_task} shows how simple an MTurk task could be. It is possible to get a lineup evaluated by creating such a simple task. We just need to replace the picture in Figure \ref{fig:amazon_task} with the lineup in Figure \ref{fig:lineup_turk} and change the answering options. But some times we may need more than one lineups to be evaluated by an observer. We may need to show a random sample of lineups from a pool of many lineups automatically. The questions the observer would answer while examining the lineup can be different based on different lineup. Moreover, It is convenient if the lineup is clickable so that selection of plot can be made by mouse click. All these are done by creating a web application. The following section discusses this in details.
 
 
 
@@ -93,21 +96,21 @@ Figure \ref{fig:amazon_task} shows how simple an MTurk task could be. It is poss
 
 \subsection{Getting Turk Workforce}
 
-We designed and developed a web site which enables to display the lineups to the observers as per experimental design. The MTurk workers were redirected to the web site and the data were collected, stored automatically into a local database server. Demographic informations such as age group, gender and education levels were also collected. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. The location of the observer is determined by the ip address of the observer.
+There are two options to run the web application; one is to run it inside MTurk system using their API and the other is to develop a new web site. For additional control we picked the second option and planned to separate this application from MTurk system and designed our own web site to run the application. It enables to display the lineups to the observers with a lot of flexibilities. As an added benefit the data can be directly saved in a local database server instead of getting it from MTurk. 
 
-As shown in figure \ref{fig:turk_work_flow} turk workers have to visit the experimental web site and give their consent to participate the survey as per IRB requirement. In the experimental web, there is a option for observers to try some sample lineups to get familiar with the experiment. Once the observers start evaluating the lineups they are sequentially shown a specific number of lineups and at the end they are given a code as a proof for their tusk completion. The payment of the turk worker is processed if they post the code they got from experimental web site. The observers are also asked to provide some demographic information about them to make sure that the code is generated.
+Figure \ref{fig:turk_work_flow} shows how the plan works. First an MTurk task is created for the workers to see and decide whether they want to do the task based on the parameters like payment amount, estimated time the task may take to finish, how hard the task seems to be etc. Workers are informed that the task has to be done outside the MTurk system from another web site. Once the workers accept the task they are redirected to our web site where multiple lineups are shown for evaluations. After the required number of evaluations has been received, a code is generated which the workers has to submit back in MTurk system to complete the task. The code is matched with the code in our database to process payment through MTurk system.
 
 \begin{figure}[htbp]
    \centering
        \scalebox{.4}{\includegraphics{turk_work_flow.pdf}}
-       \caption{Amazon Mechanical Turk workflow and data collection.}
+       \caption{Amazon Mechanical Turk workflow shows how data are collected through turk experiment web and payment is processed through MTurk system.}
        \label{fig:turk_work_flow}
 \end{figure}
 
-This paper is organized as follows. Section \ref{sec:turk_exp} presents the details description of an experiment and things to consider before a turk experiment. Section \ref{sec:web_application} presents the design of an web application to get lineups evaluated with additional flexibilities and options that may not possible through MTurk. Section \ref{sec:turk_task} describes how to create a MTurk task, mange workers and process payments. Finally Section \ref{sec:turk_data} presents some data obtained from various experiments done through the proposed web application and discusses about the quality of the data.
+This paper is organized the way a researcher may work with lineup and get feedback data from the observer. Section \ref{sec:turk_exp} presents the details description of an experiment with lineups and things to consider before a turk task. Section \ref{sec:web_application} presents the design of an web application to get lineups evaluated with additional flexibilities and options that may not possible through MTurk. Section \ref{sec:turk_task} describes how to create an MTurk task, mange workers and process payments. Finally Section \ref{sec:turk_data} presents some data obtained from various experiments done through the proposed web application and discusses about the quality of the data.
 
 
-\section{Experimental Design} \label{sec:turk_exp}
+\section{Experiment Design} \label{sec:turk_exp}
 
 \subsection{Selecting Parameter of Simulation Experiment} The first consideration for a simulation experiment is to fix the parameters of the model of interest. The very first consideration is the sample size. Other parameters depends on the model of interest. For example we have fixed the parameters in our first Amazon Mechanical Turk experiment as shown in table \ref{tbl:experiment_params}.
 
@@ -162,51 +165,6 @@ Are the lineups randomly selected?
 We developed a web site to run the Amazon Mechanical Turk experiments.  PHP scripting language is used and embedded with HTML for designing the web site. Javascript is used for validating the input data and producing warning message.  We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allowed us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site to transfer data to our server. 
 
 \subsection{Form Design}
-
-\subsection{Database design} The design of the database to store the collected data is shown in Figure \ref{fig:turk_database_design}. It is designed such a way that data from many different experiments can be stored in the same database. In total five separate tables are used. Table turk\_worker contains static information about each turk worker. The location information of each turk worker is stored in ip\_detals table. The information in this table is collected later based on the ip address of each turk worker. Table picture\_delais contains the static information about each lineup. Table feedback is a dynamic table that grows with the number of feedbacks from each turk user. The multiple activities of each turk user are recorded in turk\_activity table. This table also contains the codes provided to the user once they finish the experiment. For our web site we used MySQL database located on a local server.
-
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.4}{\includegraphics{turk_database_design.pdf}}
-       \caption{Database design for Turk experiment data collection. The same database can be used for multiple turk experiments by keeping experiment information in picture details table which contains information about the lineups.}
-       \label{fig:turk_database_design}
-\end{figure}
-
-\subsection{Data collection} To collect the survey data we developed a web site that shows a plot to an individual and get feedback from that individual. Each individual is asked to provide feedback for at least 10 different plots. The 10 plots that are shown to an individual are randomly chosen with probability proportional to the number of responses required (the sample size) for that plot.
-
-The information collected from each individual is shown in table \ref{tbl:data_info}. Data received from each individual are automatically saved in a secured mysql server maintained by the department of statistics, Iowa state university. 
-
-\begin{table}[hbtp]
-\caption{Information Collected from Each Individual}
-\centering 
-\begin{tabular}{lp{8cm}} 
-\hline
-Information &  Description \\ %[0.5ex] % inserts table %heading 
-\hline
-Identification & Nick name or any ID to determine the responses of an Individual \\
-Response number & The number of the plot on the lineup plot which the individual thinks the most different than other 19 plots.\\ 
-Reason of of choice & Reason why the individual chooses the plot \\
-Confidence level & Confidence level of individual choice \\ 
-Age group& The age group where the individual belongs \\
-Education & The highest level of education completed \\
-Gender & Male or female \\
-Geographic Location & This information is collected through the ip address of the individual computer \\ 
-Time taken & Time taken for each feed back\\
-\hline
-\end{tabular}
-\label{tbl:data_info}
-\end{table}	
-
-
-\subsection{Data collection sequence} Once turk users are directed to our web site, they can see the detailed explanation on how they can perform the task of evaluation. Some simple examples are displayed along with correct responses. The users have options to try some test lineups before going for the actual experiment. But before that they have to provide the informed consent as per IRB requirement. The flow chart for this is shown in Figure \ref{fig:turk_data_flow}
-
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.4}{\includegraphics{turk_data_flow.png}}
-       \caption{Data collection work flow. Turk worker can try some test lineups before going to the live experiment after providing informed consent.}
-       \label{fig:turk_data_flow}
-\end{figure}
-
 Two web forms are designed to collect information from the turk users. The first form shown in Figure \ref{fig:turk_web} collects feedback information about a single lineup. The information collected through this form is all about the lineup that includes plot number selected, reasons for selection and the confidence level of the selection. Each turk user is identified by the nick name which is mainly the turk ID. 
 
 Each turk user is shown some specific number of lineups for evaluation. These lineups are randomly selected from a pool of lineups designed for evaluations. The algorithm for how the lineups should be selected to show and what would be the order of display is implemented in the form shown in Figure \ref{fig:turk_web}. Also there is a check for invalid information which is implemented using javascript. If users try to go forward without giving any feedback they are not allowed to do that showing a warning message.
@@ -226,6 +184,56 @@ After the evaluation is recorded on a lineup through form shown in Figure \ref{f
        \caption{The turk workers are given feedbacks whether their evaluation for each lineup was correct or not. This works as an incentive for the worker to work more enthusiastically. To ensure the payment, the turk workers have to provide some information using this form.}
        \label{fig:turk_web_feedback}
 \end{figure}
+
+
+\subsection{Database design} The design of the database to store the collected data is shown in Figure \ref{fig:turk_database_design}. It is designed such a way that data from many different experiments can be stored in the same database. In total five separate tables are used. Table turk\_worker contains static information about each turk worker. The location information of each turk worker is stored in ip\_detals table. The information in this table is collected later based on the ip address of each turk worker. Table picture\_delais contains the static information about each lineup. Table feedback is a dynamic table that grows with the number of feedbacks from each turk user. The multiple activities of each turk user are recorded in turk\_activity table. This table also contains the codes provided to the user once they finish the experiment. For our web site we used MySQL database located on a local server.
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.4}{\includegraphics{turk_database_design.pdf}}
+       \caption{Database design for Turk experiment data collection. The same database can be used for multiple turk experiments by keeping experiment information in picture details table which contains information about the lineups.}
+       \label{fig:turk_database_design}
+\end{figure}
+
+\subsection{Data collection} To collect the survey data we developed a web site that shows a plot to an individual and get feedback from that individual. Each individual is asked to provide feedback for at least 10 different plots. The 10 plots that are shown to an individual are randomly chosen with probability proportional to the number of responses required (the sample size) for that plot.
+
+The MTurk workers were redirected to the web site and the data were collected, stored automatically into a local database server. Demographic informations such as age group, gender and education levels were also collected. The time taken for each evaluation is computed based on the time the plot was shown and the time the feedback was received. The location of the observer is determined by the ip address of the observer.
+
+Figure \ref{fig:turk_work_flow} turk workers have to visit the experimental web site and give their consent to participate the survey as per IRB requirement. In the experimental web, there is a option for observers to try some sample lineups to get familiar with the experiment. Once the observers start evaluating the lineups they are sequentially shown a specific number of lineups and at the end they are given a code as a proof for their tusk completion. The payment of the turk worker is processed if they post the code they got from experimental web site. The observers are also asked to provide some demographic information about them to make sure that the code is generated.
+
+The information collected from each individual is shown in Table \ref{tbl:data_info}. Data received from each individual are automatically saved in a secured mysql server maintained by the department of statistics, Iowa state university. 
+
+\begin{table}[hbtp]
+\caption{Information Collected from Each Individual}
+\centering 
+\begin{tabular}{lp{8cm}} 
+\hline
+Information &  Description \\ %[0.5ex] % inserts table %heading 
+\hline
+Identification & Nick name or any ID to determine the responses of an Individual \\
+Response number & The number of the plot on the lineup plot which the individual thinks the most different than other 19 plots.\\ 
+Reason of of choice & Reason why the individual chooses the plot \\
+Confidence level & Confidence level of individual choice \\ 
+Age group& The age group where the individual belongs \\
+Education & The highest level of education completed \\
+Gender & Male or female \\
+Geographic Location & This information is collected through the ip address of the individual computer \\ 
+Time taken & Time taken for each response\\
+\hline
+\end{tabular}
+\label{tbl:data_info}
+\end{table}	
+
+
+\subsection{Data collection sequence} Once turk users are directed to our web site, they can see the detailed explanation on how they can perform the task of evaluation. Some simple examples are displayed along with correct responses. The users have options to try some test lineups before going for the actual experiment. But before that they have to provide the informed consent as per IRB requirement. The flow chart for this is shown in Figure \ref{fig:turk_data_flow}
+
+\begin{figure}[hbtp]
+   \centering
+       \scalebox{.4}{\includegraphics{turk_data_flow.png}}
+       \caption{Data collection work flow. Turk worker can try some test lineups before going to the live experiment after providing informed consent.}
+       \label{fig:turk_data_flow}
+\end{figure}
+
 
 \subsection{Data Security and Validity} Consideration to avoid hacking
 
@@ -255,6 +263,7 @@ In this section we intend to analyze the performance of the experiments we did u
 \begin{table}[hbtp]
 \caption{Amazon mechanical turk experiments and their properties. Duration in hours per 100 tasks show the popularity of some tasks compared to others.}
 \centering
+\scalebox{0.9}{
 \begin{tabular}{rlrrrrrrr}
   \hline
 & Experiment& \multicolumn{2}{c}{ Total Task}& Average & \multicolumn{2}{c}{Duration (hour)} & Payment & Pay rate\\
@@ -273,6 +282,7 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
   10 & Test normality & 406 &   6 & 22.70 & 74.35 & 18.31 & 1.00 & 2.64 \\ 
    \hline
 \end{tabular}
+}
 \label{tbl:mturk}
 \end{table}
 
