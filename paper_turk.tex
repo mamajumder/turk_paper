@@ -312,17 +312,17 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
 \end{figure}
 
 
-\subsection{Data Cleaning}
+\subsection{Data Cleaning} Some suggestion about data cleaning based on experimental evidence. What to expect from turk data.
 
-\subsection{Diversity in the Data}
+\subsection{Diversity in the Data} Demographics, geographical locations, academic diversity
 
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.5}{\includegraphics{turker_country.pdf}}
-       \scalebox{.5}{\includegraphics{turker_location.pdf}}       
-       \caption{The location of turk workers on the world map shows the geographical diversity of turk workers even though most of the workers come from India and United States.}
-       \label{fig:rsq}
-\end{figure}
+%\begin{figure}[hbtp]
+%   \centering
+%       \scalebox{.5}{\includegraphics{turker_country.pdf}}
+%       \scalebox{.5}{\includegraphics{turker_location.pdf}}       
+%       \caption{The location of turk workers on the world map shows the geographical diversity of turk workers even though most of the workers come from India and United States.}
+%       \label{fig:rsq}
+%\end{figure}
 
 \subsection{Selection Bias} Since data are collected through web interface it is possible to have the selection bias in the turk experiment we did. In this section we intend to analyze to what extent this selection bias has occurred and how we can adjust for this.
 
@@ -343,76 +343,76 @@ The next direction of this work is to make a complete package so that anyone can
 We also intend to set up a web application for public use where researcher can put their lineup for online evaluation. The observer can be recruited from MTurk or any other source including local lab participants. 
 
 
-
-\section{Appendix: What do Turk Workers Pick, $R^2$ or $p$-value?} What do people pick in a lineup plot, p-value or $R^2$? To address this issue we obtain the approximate theoretical relationship between $R^2$ and the power of the classical hypothesis test. Suppose we want to test the significance of the slope ( i.e.,  $H_0: \beta=0$ against $\beta \ne 0$) of a continuous covariate $X$ in  a simple linear regression model setting. Also consider $X \sim N(0,1)$. For a sample of size $n$ this gives us 
-\begin{eqnarray*}
-Y_i-\bar{Y}& = & \beta_0+\beta_1X_i+\epsilon_i - \beta_0 - \beta_1 \bar{X}- \bar{\epsilon} \\
-          & = & \beta_1(X_i-\bar{X})+(\epsilon_i-\bar{\epsilon})
-\end{eqnarray*}
-Now 
-\begin{eqnarray*}
-X_i-\bar{X}& = & X_i - \frac1n (X_1 + X_2 + ... + X_i + .....+ X_n) \\
-          & = & X_i - \frac1n X_i - \frac1n \sum_{j \neq i}{X_j}\\
-          & = & (1-\frac1n)X_i - \frac1n \sum_{j \neq i}{X_j}
-\end{eqnarray*}
-
-Thus we have 
-\begin{eqnarray*}
-E(X_i-\bar{X})^2 & = & (1-\frac1n)EX_i^2 - \left( \frac1n \right )^2 (n-1) EX_j^2 \\
-                 & = & (1-\frac1n)^2+ \frac{n-1}{n^2}\\
-                 & = & \frac{n-1}{n}
-\end{eqnarray*}
-
-Similarly we have 
-
-\begin{eqnarray*}
-E(\epsilon_i-\bar{\epsilon})^2 & = & (1-\frac1n)E\epsilon_i^2 - \left( \frac1n \right )^2 (n-1) E\epsilon_j^2 \\
-                 & = & \left((1-\frac1n)^2+ \frac{n-1}{n^2} \right) \sigma^2 \\
-                 & = & \frac{n-1}{n}\sigma^2
-\end{eqnarray*}
-Finally we have expected total sum of square (SST) as
-\begin{eqnarray*}
-E\sum_i{(Y_i-\bar{Y})^2} & = & \sum_i E(Y_i-\bar{Y})^2=\sum_i \left [ \beta_1^2 E(X_i-\bar{X})^2 + E(\epsilon_i-\bar{\epsilon})^2 \right] \\
-                 & = & \sum_i\left[ \beta_1^2 \frac{n-1}{n}+  \sigma^2 \frac{n-1}{n}\right]\\
-                 & = & (n-1)(\sigma^2+\beta_1^2)
-\end{eqnarray*}
-
-We know $E(MSE|X) = \sigma^2$ or $E(SSE/n-2)|X = \sigma^2$ which gives the expected residual or error sum of square as $$E \sum_i (Y_i-\hat Y_i)^2=(n-2)\sigma^2$$
-Thus we have the expected regression sum of squares $SSR =  (n-1)(\sigma^2+\beta_1^2) - (n-2)\sigma^2 = (n-1) \beta_1^2+\sigma^2$ This gives $$R^2=\frac{(n-1) \beta_1^2+\sigma^2}{ (n-1)(\sigma^2+\beta_1^2)}$$
-
-
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.3}{\includegraphics{scatter_plot_beta_4.pdf}}
-       \caption{Scatter plot of data generated for $\beta_0$=6, $\beta_1$=4, sample size $n =300$ and $\sigma = 12$. $R^2$ for this data was obtained as 0.1309 showing that the model could not successfully explain the variation in $Y$. But notice in figure \ref{fig:power_rsq} that power for $\beta$=4 is almost 1. So, Can we conclude that $R^2$ does not have any effect in deciding whether $H_0: \beta_1=0$ should be rejected or not?}
-       \label{fig:plot_beta_4}
-\end{figure}
-
-
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.35}{\includegraphics{power_300_12.pdf}}
-       \caption{Power curve and $R^2$ values for sample size $n =300$ and $\sigma = 12$. Notice that for a small value of $R^2$ (0.1) the power is almost 1.}
-       \label{fig:power_rsq}
-\end{figure}
-
-
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.35}{\includegraphics{rsquare_contour.pdf}}
-       \scalebox{.35}{\includegraphics{rsquare_beta_sigma.pdf}}
-       \caption{Contour and surface plots of $R^2$ for sample size $n =300$. The values for $R^2$ goes down sharply with $\sigma$ and $\beta$.}
-       \label{fig:contour_rsq}
-\end{figure}
-
-\begin{figure}[hbtp]
-   \centering
-       \scalebox{.35}{\includegraphics{rsquare_beta_sigma_lines.pdf}}
-       \scalebox{.35}{\includegraphics{rsquare_beta_sigma_lines1.pdf}}       
-       \caption{Relationship of $R^2$ with $\sigma$ and $\beta$ for sample size $n =300$. The values for $R^2$ goes down sharply with $\sigma$ and $\beta$.}
-       \label{fig:rsq}
-\end{figure}
-
+%
+%\section{Appendix: What do Turk Workers Pick, $R^2$ or $p$-value?} What do people pick in a lineup plot, p-value or $R^2$? To address this issue we obtain the approximate theoretical relationship between $R^2$ and the power of the classical hypothesis test. Suppose we want to test the significance of the slope ( i.e.,  $H_0: \beta=0$ against $\beta \ne 0$) of a continuous covariate $X$ in  a simple linear regression model setting. Also consider $X \sim N(0,1)$. For a sample of size $n$ this gives us 
+%\begin{eqnarray*}
+%Y_i-\bar{Y}& = & \beta_0+\beta_1X_i+\epsilon_i - \beta_0 - \beta_1 \bar{X}- \bar{\epsilon} \\
+%          & = & \beta_1(X_i-\bar{X})+(\epsilon_i-\bar{\epsilon})
+%\end{eqnarray*}
+%Now 
+%\begin{eqnarray*}
+%X_i-\bar{X}& = & X_i - \frac1n (X_1 + X_2 + ... + X_i + .....+ X_n) \\
+%          & = & X_i - \frac1n X_i - \frac1n \sum_{j \neq i}{X_j}\\
+%          & = & (1-\frac1n)X_i - \frac1n \sum_{j \neq i}{X_j}
+%\end{eqnarray*}
+%
+%Thus we have 
+%\begin{eqnarray*}
+%E(X_i-\bar{X})^2 & = & (1-\frac1n)EX_i^2 - \left( \frac1n \right )^2 (n-1) EX_j^2 \\
+%                 & = & (1-\frac1n)^2+ \frac{n-1}{n^2}\\
+%                 & = & \frac{n-1}{n}
+%\end{eqnarray*}
+%
+%Similarly we have 
+%
+%\begin{eqnarray*}
+%E(\epsilon_i-\bar{\epsilon})^2 & = & (1-\frac1n)E\epsilon_i^2 - \left( \frac1n \right )^2 (n-1) E\epsilon_j^2 \\
+%                 & = & \left((1-\frac1n)^2+ \frac{n-1}{n^2} \right) \sigma^2 \\
+%                 & = & \frac{n-1}{n}\sigma^2
+%\end{eqnarray*}
+%Finally we have expected total sum of square (SST) as
+%\begin{eqnarray*}
+%E\sum_i{(Y_i-\bar{Y})^2} & = & \sum_i E(Y_i-\bar{Y})^2=\sum_i \left [ \beta_1^2 E(X_i-\bar{X})^2 + E(\epsilon_i-\bar{\epsilon})^2 \right] \\
+%                 & = & \sum_i\left[ \beta_1^2 \frac{n-1}{n}+  \sigma^2 \frac{n-1}{n}\right]\\
+%                 & = & (n-1)(\sigma^2+\beta_1^2)
+%\end{eqnarray*}
+%
+%We know $E(MSE|X) = \sigma^2$ or $E(SSE/n-2)|X = \sigma^2$ which gives the expected residual or error sum of square as $$E \sum_i (Y_i-\hat Y_i)^2=(n-2)\sigma^2$$
+%Thus we have the expected regression sum of squares $SSR =  (n-1)(\sigma^2+\beta_1^2) - (n-2)\sigma^2 = (n-1) \beta_1^2+\sigma^2$ This gives $$R^2=\frac{(n-1) \beta_1^2+\sigma^2}{ (n-1)(\sigma^2+\beta_1^2)}$$
+%
+%
+%\begin{figure}[hbtp]
+%   \centering
+%       \scalebox{.3}{\includegraphics{scatter_plot_beta_4.pdf}}
+%       \caption{Scatter plot of data generated for $\beta_0$=6, $\beta_1$=4, sample size $n =300$ and $\sigma = 12$. $R^2$ for this data was obtained as 0.1309 showing that the model could not successfully explain the variation in $Y$. But notice in figure \ref{fig:power_rsq} that power for $\beta$=4 is almost 1. So, Can we conclude that $R^2$ does not have any effect in deciding whether $H_0: \beta_1=0$ should be rejected or not?}
+%       \label{fig:plot_beta_4}
+%\end{figure}
+%
+%
+%\begin{figure}[hbtp]
+%   \centering
+%       \scalebox{.35}{\includegraphics{power_300_12.pdf}}
+%       \caption{Power curve and $R^2$ values for sample size $n =300$ and $\sigma = 12$. Notice that for a small value of $R^2$ (0.1) the power is almost 1.}
+%       \label{fig:power_rsq}
+%\end{figure}
+%
+%
+%\begin{figure}[hbtp]
+%   \centering
+%       \scalebox{.35}{\includegraphics{rsquare_contour.pdf}}
+%       \scalebox{.35}{\includegraphics{rsquare_beta_sigma.pdf}}
+%       \caption{Contour and surface plots of $R^2$ for sample size $n =300$. The values for $R^2$ goes down sharply with $\sigma$ and $\beta$.}
+%       \label{fig:contour_rsq}
+%\end{figure}
+%
+%\begin{figure}[hbtp]
+%   \centering
+%       \scalebox{.35}{\includegraphics{rsquare_beta_sigma_lines.pdf}}
+%       \scalebox{.35}{\includegraphics{rsquare_beta_sigma_lines1.pdf}}       
+%       \caption{Relationship of $R^2$ with $\sigma$ and $\beta$ for sample size $n =300$. The values for $R^2$ goes down sharply with $\sigma$ and $\beta$.}
+%       \label{fig:rsq}
+%\end{figure}
+%
 
 
 
