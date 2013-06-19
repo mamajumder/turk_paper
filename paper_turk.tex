@@ -152,15 +152,17 @@ All of these three approaches discussed above has some problems. Kolmogorov meth
 
 To have an idea how many evaluations are required for a lineup one approach can be to have a prior idea of proportion correct for the lineup. For a given proportion $p$ we want to have margin of error (ME) to be 0.1. Thus we have $$ME =1.96 \sqrt{ \frac 1 n p(1-p)} \le 0.05$$ which gives us the estimation of minimum sample size $$n \geq \frac{p(1-p)}{(0.05/1.96)^2}.$$ 
 
+If we do not have any prior idea of proportion of correct or power, we need to rely on the power of similar conventional test. This can be assumed to be the power or proportion correct for that lineup. Other ways of having an estimate of sample size can be very specific to the problem of interest and should be dealt with the requirement of the problem.
 
-%Now from the theoretical power curve for each parameter combinations shown in table \ref{tbl:experiment_params} we know the power(say $p$) and thus we can estimate the sample size required for that specific combinations of parameter. We collect data such that each of the parameter combinations in the table \ref{tbl:experiment_params} has approximately the estimated sample size that we calculated here.
+\subsection{Test and Training Lineup} Some lineups should be presented to the MTurk worker so that they can become familiar with the experimental environment before they participate the actual experiment. It is important to setup this properly. The training lineups should be easy and feedback should be provided right after the feedback received. The purpose is to give them an idea how the actual task would look like.
 
+The another way can be to make this training mandatory to participate the experiment. The MTurk worker should have certain proportion of correct responses on these training lineups to allow them to participate. This is often practiced in MTurk task and the workers are very familiar with this approach. In MTurk language it is called the qualification of the worker. Thus to design a MTurk task it is important to set an standard qualification of the worker.
 
-\subsection{Test and Training Lineup} How many test lineup?
+Other things that needs to be considered include number of training lineups, how the lineups should be shown. Training should not take much longer. Two or three lineups can provide enough training. The training lineups should be easy to evaluate and they should be randomly selected from a very small number of lineups. That may produce repetition which may help the MTurk workers to retest their skill on the lineup the might have a wrong selection before. 
 
-How to setup training, randomized or sequential selection of lineup for training.
+There should be a test lineup when the workers evaluate multiple lineups in actual experiment. This test lineup can be used to process payment and detect any unusual responses. The test lineup should be super easy to evaluate so that anyone can detect the data plot without much effort.
 
-Example lineup on the homepage should be of size three or four so that more than one lineup can be placed on the homepage.
+It is helpful if some example lineups are presented with the experimental description. Example lineup on the homepage should be of size three or four so that more than one lineup can be placed on the homepage. This helps the worker decide whether they are willing to participate the experiment at all.
 
 \subsection{Plan for a Turk Task} \label{sec:task_plan} To make a good use of MTurk crowd source, it is important to split any big project into small pieces or Task. To present each task for the workers to do, a Human Intelligence Task or HIT needs to be designed which includes crisp and clear instructions of the task, descriptions of specific input and output desired and payment information. To design a HIT for lineups to be evaluated we need to consider the following issues;
 
