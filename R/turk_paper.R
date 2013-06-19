@@ -100,6 +100,49 @@ sa <- ddply(dat,.(age), summarize,
 users <- read.csv("../data/turk_users.csv", header=T)
 
 
+# ================================================================
+# Distribution of p-value
+# These codes generate the distribution of p-value and compute the
+# expected power of visual test as well. Last modified by Mahbub
+
+n <- 300
+beta <- 3
+sigma <- 12
+
+ncp <- beta* sqrt(n)/(2*sigma) # refer to documentation gmail (xbar=1/2 here)
+
+#Density of the absolute value of a noncentral
+#t random variable with df degrees of freedom
+#and noncentrality parameter ncp.
+
+f.abs.t=function(t,df,ncp=0){
+  (t>0)*dt(t,df=df,ncp=ncp)+dt(-t,df=df,ncp=ncp)
+}
+
+#Density of the p-value from a t-test 
+#when the noncentrality parameter is ncp
+#and the degrees of freedom are df.
+
+f=function(p,df,ncp=0)
+{
+  tt=qt(1-p/2,df=df)
+  f.abs.t(tt,df=df,ncp=ncp)/f.abs.t(tt,df=df)
+}
+
+#Example: Density of p-value for t-test with
+#df=8 and ncp=2.
+df <- n-2 # since 2 parameters in the regression model
+
+
+p=seq(0.01,1,by=.01)
+y=f(p,df=df,ncp=ncp)
+#plot(p,y,type="l",ylim=c(0,max(y)))
+
+library(ggplot2)
+qplot(p,y,geom="line",ylim=c(0,max(y))) +xlab("p-value") +ylab("density")
+ggsave("../images/dist_pvalue.pdf", height=4, width=4)
+
+
 # ------------ description of coded variables in the data -----------
 
 ## gender 1 = male 

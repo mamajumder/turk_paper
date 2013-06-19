@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 
 %\usepackage{amsmath, amssymb, fullpage, amsthm, array, algorithm2e,graphicx}
-\usepackage{graphicx}
+\usepackage{graphicx, amsmath}
 \usepackage{url}
 \RequirePackage{natbib}
 \usepackage[colorlinks=true, citecolor=blue, linkcolor=blue]{hyperref}
@@ -112,28 +112,41 @@ MTurk will provide workers who are used to doing simple task. Thus, for lineups 
 
 \section{Experiment Design} \label{sec:turk_exp}
 
-If a lineup is already created from observed data, the web application presented in Section \ref{sec:web_application} can be used to evaluate it. In this scenario we do not need to design an experiment. This section will be useful when a simulation experiment is needed to examine different plot types as test statistics and compare the power of visual test \citep{majumder:2013}. To examine the effectiveness of certain plots in displaying the data one might want to design an experiment with lineup \citep{heike:2012}. In any cases, two major considerations are choice of parameters to simulate lineup and number of people needed to be recruited to evaluate a lineup.
+If a lineup is created from actual observed data, the web application presented in Section \ref{sec:web_application} can be used to evaluate it. In that case we do not need to design a simulation experiment. This section will be useful when a simulation experiment is needed to examine different plot types as test statistics and compare the power of visual test \citep{majumder:2013}. To examine the effectiveness of certain plots in displaying the data one might want to design an experiment with lineup \citep{heike:2012}. In any cases, two major considerations are choice of parameters to simulate lineup and number of people needed to evaluate a lineup.
 
-\subsection{Selecting Parameter to Simulate Lineup} The first consideration for a simulation experiment is to fix the parameters of the model of interest. 
+\subsection{Selecting Parameter to Simulate Lineup} \label{sec:parameter_selection} In any experimental design we need to have some control. For a simulation experiment with lineup, this refers to the parameter related to a lineup. This depends on what the purpose of the experiment is. For example, to compare the power of a parametric test one may fix the parameter specified by alternative hypothesis and generate data from that model. This data can be considered as the observed data. A lineup can be created by placing this observed data plot on a lineup where rest of the data plots come from the model specified by the null model \citep{majumder:2013}. 
+
+In addition to the hypothesized parameter of interest, other parameters that may need to be fixed include sample sizes, variability in the data, error structure etc. These parameters produces the effect sizes and are responsible for any detectable signal in the lineup. Thus for a simulation study a range of effects sizes need to be considered. It is a little bit tricky to decide what exact effect sizes are appropriate. For example in \cite{majumder:2013} the parameters were chosen so that they produce a smoother power curve of a conventional test. But in general this depends on what the researchers may want to test and control in an experimental study.
 
 %The very first consideration is the sample size. Other parameters depends on the model of interest. For example we have fixed the parameters in our first Amazon Mechanical Turk experiment as shown in table \ref{tbl:experiment_params}.
 
-\subsection{Procedure to Simulate Data Plot} \label{sec:simulate_plot} In the simulation study the very first step is to generate a random sample of data from model of interest for pre-specified parameters. We call this data set observed data. While the effect of the natural variability of this data set could be controlled by taking the replication of few samples, it is desirable to study whether we can reduce this variability alternatively. The main reason is to minimize the cost. To make sure that the observed data set truly represents model of interest we are considering three approaches. One is Kolomogorov test statistic approach and the other two approaches are quantiles of p values and closeness of estimated parameters to the true parameters. These three approaches are discussed below.\\
+\subsection{Procedure to Simulate Data Plot} \label{sec:simulate_plot} In the simulation study the very first step is to generate a random sample of data from model of interest for pre-specified parameters. We call this data set observed data. Every time we do that we get a new set of observed data which may produce a parameter very different than the actual parameter specified to generate the data. But it is important to have a observed data closely representing the parameters chosen since other null plots will be compared to this data plot in a lineup. One solution to this is to take some replications of lineups for the same effect size. 
 
-{\bf Kolomogorov test statistic approach:} In this approach we simulate 1000 data sets and obtain Kolmogorov test statistic for each set of data as below. $$D_n=\sup_x |F_n(x)-F(x)|$$ where $F_n(x)=\frac1n \sum_{i=1}^n I_{X_i\le x}$ be the empirical distribution function of fitted residuals, $I_{X_i\le x}$ be the indicator function equal to 1 if $X_i\le x$ and equal to 0 otherwise and $F(x)$ be the cumulative function of normal with mean zero(0) and variance $\sigma^2$. We then keep the data set that has minimum value for Kolmogorov test statistic.  For replication purpose we can generate three observed data sets in similar way.\\
+While the effect of the natural variability of the observed data set can be controlled by taking the replication of few samples, it is desirable to study whether we can reduce this variability further to some extent. For this we pick the example of a simple linear regression model and examines how the data plot can be generated that best represent the specified parameter.  Consider a linear regression model 
+\begin{equation} \label{eqn:turk_model} 
+Y_i = \beta_0 + \beta X  + \epsilon_i 
+\end{equation}
+where $\epsilon_i \stackrel{iid}{ \sim } N(0,\sigma^2)$, $i=1,2, .., n$. The covariate $X$ can be continuous or discrete. As discussed in Section \ref{sec:parameter_selection} we specify the parameters sample size $n$=300, regression slope $\beta$=3 and error standard deviation $\sigma$=12 to simulate observed data.
 
-{\bf Quantiles of p-value approach:} With any data set we generate there is a p-value associated with testing $H_0: \beta=0$. In this approach we generate 1000 data sets from the model of interest and obtain p-values associated with $H_0: \beta=0$ for each data set after fitting the same model. Then we construct blocks of p-value such as (0.0-$q_{33}$), ($q_{33}$-$q_{66}$), ($q_{66}$-1) where $q_i$ is the $i$th percentile in the distribution of the p-values. We then randomly select three data sets that have corresponding p-values in the above quantile range. As an example the distribution  of p-values in 1000 simulated data sets for $n$=300, $\beta$=3 and $\sigma$=12 is shown in figure \ref{fig:dist_pvalue}.  Notice that if we like to have three replications of plots, we will have observed data sets with smaller p-values as the distribution is highly right skewed as well as the 33th and 66th percentiles of p-values are 0.0101 and 0.077 respectively. So, another option may be to take the mid points of those quantile ranges and pick the data sets that have those p-values.\\
+To make sure that the observed data set truly represents the Model \eqref{eqn:turk_model} we suggest three approaches. One is Kolomogorov test statistic approach and the other two approaches are quantiles of $p$-values and closeness of estimated parameters to the true parameters. To illustrate the three approaches we used Model \eqref{eqn:turk_model} as an example but the idea can be extended to any situation. The three approaches are discussed below. \\
+
+{\bf Kolomogorov test statistic approach:} In this approach we simulate 1000 data sets from Model \eqref{eqn:turk_model}  and obtain Kolmogorov test statistic for each set of data as below. $$D_n=\sup_x |F_n(x)-F(x)|$$ where $F_n(x)=\frac1n \sum_{i=1}^n I_{X_i\le x}$ be the empirical distribution function of fitted residuals, $I_{X_i\le x}$ be the indicator function equal to 1 if $X_i\le x$ and equal to 0 otherwise and $F(x)$ be the cumulative function of normal with mean zero(0) and variance $\sigma^2$. We keep the data set that has minimum value for Kolmogorov test statistic since for this data set $F_n(x)$ should be the closest to the desired normal model.  \\
+
+{\bf Quantiles of $p$-value approach:} For a simulated observed data set we can obtain the $p$-value associated to testing $H_0: \beta=0$. The distribution of $p$-value is uniform under null hypothesis but under alternative it has a right skewed distribution. Figure~\ref{fig:dist_pvalue} shows the distribution  of $p$-values for sample size $n$=300, regression slope $\beta$=3 and error standard deviation $\sigma$=12. If we generate a data set randomly there is a 21\% chance that the data will show a $p$-value of 0.25 or more even though we generated data set with non-zero $\beta=3$. We need to make sure that the simulated data does not come from this extreme end. On top of that we want some replication so that this extreme effect can be controlled at some level. For this example we intend to pick three replications.
+
 
 \begin{figure}[hbtp]
    \centering
-       \scalebox{.3}{\includegraphics{dist_pvalue.pdf}}
-       \caption{Distribution of p-values for $n$=300, $\beta$=3 and $\sigma$=12.}
+       \scalebox{.6}{\includegraphics{dist_pvalue.pdf}}
+       \caption{Distribution of $p$-values for $n$=300, $\beta$=3 and $\sigma$=12.}
        \label{fig:dist_pvalue}
 \end{figure}
 
-{\bf Closeness of estimated parameters:} When we simulate a data set from the model of interest and again fit the same model with the data set we do not get the parameters estimates same as what we fixed while simulation. It depends on what the standard errors of the parameter estimates are. In our experimental setting we some times have very different estimates for small parameter values(such as one may get estimated value of 0.5 for true $\beta=3$). In this approach we pick the data set that shows most close estimates of parameters compared to true parameter values.\\
+In this approach we generate 1000 data sets from the model of interest and obtain $p$-values for each data set after fitting the same model. We construct 3 blocks of $p$-values such as (0.0-$q_{33}$), ($q_{33}$-$q_{66}$), ($q_{66}$-1) where $q_i$ is the $i$th percentile in the distribution of the $p$-values. We randomly select three data sets that have corresponding $p$-values in the above quantile range.  Notice that if we like to have three replications of plots, we will have observed data sets with smaller $p$-values as the distribution is highly right skewed as well as the 33th and 66th percentiles of p-values are 0.0101 and 0.077 respectively. So, another option may be to take the mid points of those quantile ranges and pick the data sets that have those p-values. \\
 
-All of these three approaches discussed above has some problems. Kolmogorov method does not necessarily make sure that estimated parameters are close to the true parameters. On the other hand closeness of estimated parameters does not make sure that p value is small enough when we should reject the null hypothesis. Only the quantiles approach seems reasonable as it has much control over p-values and it gives similar data sets that has closest parameter estimates. So we used the quantiles of p-value approach in section \ref{sec:simulate_plot} to obtain three replicated sample of observed data sets for a particular parameter settings.\\
+{\bf Closeness of estimated parameters:} When we simulate a data set from the Model \eqref{eqn:turk_model} and fit the model to the data set again, we do not get the parameters estimates same as what we fixed while simulation. For example, we obtained a parameter estimates of 0.5 for true $\beta=3$. We want a data set where the parameter is closed to our fixed slope $\beta=3$.  In this approach we generate 1000 data sets and pick the data set that shows most close estimates of parameters compared to true parameter values.
+
+All of these three approaches discussed above has some problems. Kolmogorov method does not necessarily make sure that estimated parameters are close to the true parameters. On the other hand closeness of estimated parameters does not make sure that $p$-value is small enough when we should reject the null hypothesis. Only the quantiles approach seems reasonable as it has much control over $p$-values and it gives similar data sets that has closest parameter estimates. So we suggest the quantiles of $p$-value approach to generate observed data with specific effect size.
 
 \subsection{Sample size estimation} By sample size we mean the number of evaluations per lineup. It is different than number of people who evaluates lineup. If multiple lineups are evaluated by a person, sample size will be larger than number of people recruited from MTurk. 
 
@@ -149,7 +162,7 @@ How to setup training, randomized or sequential selection of lineup for training
 
 Example lineup on the homepage should be of size three or four so that more than one lineup can be placed on the homepage.
 
-\subsection{Plan for a Turk Task} \label{sec:task_plan} To make a good use of MTurk crowd source, it is important to split any big project into small pieces or Task. To present each task for the workers to do, a Human Intelligence Task or HIT needs to be designed which includes crisp and clear instructions of the task, descriptions of specific input and output desired and payment information. To design a HIT for lineups to be evaluated we need to consider the following issues.
+\subsection{Plan for a Turk Task} \label{sec:task_plan} To make a good use of MTurk crowd source, it is important to split any big project into small pieces or Task. To present each task for the workers to do, a Human Intelligence Task or HIT needs to be designed which includes crisp and clear instructions of the task, descriptions of specific input and output desired and payment information. To design a HIT for lineups to be evaluated we need to consider the following issues;
 
 \begin{itemize}
 
@@ -163,8 +176,7 @@ Example lineup on the homepage should be of size three or four so that more than
 
 \begin{enumerate}
 \item Demographic information of the observer
-\item Reasons for choice
-\item Confidence levels of the response provided
+\item Supplementary information such as reasons or confidence levels of the response provided
 \item Location information
 \item Time of the evaluation
 \end{enumerate}
