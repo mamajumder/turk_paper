@@ -139,8 +139,9 @@ y=f(p,df=df,ncp=ncp)
 #plot(p,y,type="l",ylim=c(0,max(y)))
 
 library(ggplot2)
-qplot(p,y,geom="line",ylim=c(0,max(y))) +xlab("p-value") +ylab("density")+
-  theme_bw() + theme(panel.grid = element_blank())
+qplot(p,y,geom="line",ylim=c(0,max(y))) +xlab("p-value") +ylab("density") +
+  theme_bw() 
+#+ theme(panel.grid = element_blank())
 ggsave("../images/dist_pvalue.pdf", height=4, width=4)
 
 
