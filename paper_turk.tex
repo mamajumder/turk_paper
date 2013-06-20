@@ -302,13 +302,27 @@ Some cautious attempts are taken to add security to the data. Server side script
 To prevent missing information and invalid input JavaScripts are used. For controlling some flow of the work such as showing various messages, JavaScripts are used as well. Careful consideration are made so that no important informations are stored in the java variable or function that could easily be revealed.
 
 
-\section{Managing Turk Task}\label{sec:turk_task} \cite{turk} Mechanical Turk website provides various features that are helpful to maintain and organize the task and manage the workers. Creating, posting, accepting or rejecting tasks and processing payment are done from the MTurk system. It is also possible to screen out workers as per need. For example, none will be interested to recruit people who have bad reputation of getting the work done properly. This can be obtained from each worker's previous work history of total number of accepted task out of total number of submitted task. The web application we developed is for presenting lineups in a way required by the experiment design and collecting data. To get people to the web application we need to design a turk task in MTurk system.
+\section{Managing Turk Task}\label{sec:turk_task} \cite{turk} Mechanical Turk website provides various features that are helpful to maintain and organize the task and manage the workers. Creating, posting, accepting or rejecting tasks and processing payment are done from the MTurk system. It is also possible to screen out workers as needed. For example, none will be interested to recruit people who have bad reputation of getting the work done properly. This information can be obtained from each worker's previous work history of total number of accepted task out of total number of submitted task. The web application we developed is for presenting lineups in a way required by the experiment design and collecting data. To get people to the web application we need to design a turk task in MTurk system.
 
 %Turk workers are usually small payee workers. There are several issues related to the payment of their effort. These are briefly discussed in the following section. 
 
 % and we intend to work more on this as we progress through this dissertation work. 
 
-\subsection{Creating Task for Lineup Evaluation} Task description, number of people to recruit, time allowed to finish the task, specify the qualification needed, setting the duration of the task, offering the pay per task. The task needs to be created as per the task plan described in Section \ref{sec:task_plan}.
+\subsection{Creating Task for Lineup Evaluation} To create a MTurk task some parameters have to be specified. The task descriptions need to be as simple as possible. This description makes the first impression about the task along with the amount of money to be paid for each task. Once the worker agrees to do the task they may come to the web site designed for lineup evaluation. Thus it is important to provide them with enough information so that they don't have to spend much time after coming to the web application. Some other parameters that need to be specified are discussed below.
+
+\begin{itemize}
+
+\item The number of worker to recruit has to be provided so that the turk task is live until specific number of people do the task. This is related to the sample size we intend to collect on each lineup. 
+
+\item Time allowed to finish each task has to be specified. Once a specific time period is set up the task will be expired after that time and the worker can't be submit it anymore. The worker has to finish the task by that time period. 
+
+\item Qualifications needed to view and perform the task may be specified so that only desired participants can do the task. It depends on the population of interest as per the experimental design. For example one may only allow workers who have a history of doing at least 100 tasks and out of which a specific percent of tasks have been approved by other recruiters. 
+
+\item {\bf Duration of the experiment:} The duration of each experiment is a period of time set so that the task is not available after that time period no matter whether all the required number of workers have participated or not. 
+
+\item {\bf Redirect to new web:} The MTurk worker should be informed clearly that they will be redirect to a new website from where they will provide feedback. The whole task including the instruction and procedure in the web application presented as per the task plan described in Section \ref{sec:task_plan}.
+
+\end{itemize}
 
 \subsection{Accepting or Rejecting the Task} As per design we keep a test lineup plot which is very easy to evaluate. The general rule may be to reject payment when workers do not get that easy test lineup plot. Our experience suggests that there are workers who do not get that test plot but their overall success rate is very high. So depending on only one criteria the payment should not be made. 
 
@@ -362,7 +376,7 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
 \end{figure}
 
 
-\subsection{Data Cleaning} Some suggestion about data cleaning based on experimental evidence. What to expect from turk data.
+\subsection{Data Cleaning} Data cleaning is different than accepting and rejecting the task. There may be some tasks for which payment is provided but yet the tasks may need to be excluded from the study. Some suggestion about data cleaning based on experimental evidence. What to expect from turk data.
 
 \subsection{Diversity in the Data} Demographics, geographical locations, academic diversity
 
