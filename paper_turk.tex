@@ -183,7 +183,7 @@ It is helpful if some example lineups are presented with the experimental descri
 \item Time of the evaluation
 \end{enumerate}
 
-\item {\bf Payment:} Payment plays an important role on data quality and how fast the data can be collected. It depends on how many lineups are being evaluated by a worker, how much time it may require to finish the task or how hard the task is in general.
+\item {\bf Payment:} Payment plays an important role on data quality and how fast the data can be collected. It depends on how many lineups are being evaluated by a worker, how much time it may require to finish the task or how hard the task is in general. The MTurk convention is to pay as per an hourly rate of \$6. But some times it may be more or less depending on the task type. For some easy tasks it may take longer time which will reduce the pay rate by hour. Other tasks which are difficult but can be done very fast will have a increase payment rate.
 
 %Whether reasoning would be collected or not
 %
@@ -324,15 +324,34 @@ To prevent missing information and invalid input JavaScripts are used. For contr
 
 \end{itemize}
 
-\subsection{Accepting or Rejecting the Task} As per design we keep a test lineup plot which is very easy to evaluate. The general rule may be to reject payment when workers do not get that easy test lineup plot. Our experience suggests that there are workers who do not get that test plot but their overall success rate is very high. So depending on only one criteria the payment should not be made. 
+\subsection{Accepting or Rejecting the Task} There is no hard and fast rule to follow while accepting or rejecting the tasks submitted by the MTurk workers. Since MTurk task are very simple and payment amount is very small the general convention is to pay every worker who submitted the task properly as instructed. The task should not be rejected based on the quality of work unless it prominently demonstrates that the task was not performed properly and irrelevant or garbage data were provided. It is very unusual to get garbage data from MTurk workers since they are well aware that this conduct may harm their reputation as a worker. So, proper caution needs to be taken while rejecting a task. Some times may happen that the workers provided crap data unintentionally. In that case we recommend to accept the task and pay for trying the task.
 
+It is very difficult to detect whether a worker is giving data by properly inspecting the lineup or just at random. This can be monitored by putting a test lineup which is very easy to evaluate. The worker can be informed that there will be a test lineup which need to be correctly evaluated to make sure the task is accepted. This may prevent worker giving random data and it is easier to accept or reject tasks based on this criteria.  
+
+There may be mistakes made by the worker such as giving a wrong ID or a invalid input even though the whole task is properly done as instructed. In this case the task should be accepted and payment should be made. This encourages the workers and they appreciate the recruiters sincerity and provide good feedbacks. This does not happen frequently if qualified workers are recruited such as who had at least a certain number of percentage of tasks approved previously. 
+
+Other criteria to accept or reject the tasks may be more complex based on the experimental needs. For example one may accept the task if certain percentage of the easy lineups are correctly evaluated. This criteria can be used if multiple number of easy lineups are shown for evaluation. For example if there are 3 easy lineups and none of them were correctly evaluated it is most likely that the feedbacks were provided randomly. Some times it may happen that out of 10 lineups 3 were correctly evaluated but all the three easy lineups were wrongly evaluated. In that case the payment should be made since it is very unlikely that out of 10 lineups a total of 3 lineups would be correctly evaluated by just random response.
 %These issues would be addressed in our future work based on the several turk experiments that we intend to carry out.
 
-\subsection{Payment for the Worker}Amazon Mechanical Turk suggests that each worker gets \$6/hour as wage. Thus we need to estimate how much time a task may take to complete and based on that we have to specify the payment for each task. Our experience indicates that a better payment brings more serious workers who usually provide cleaner data which is more reliable. 
+The payment of the workers is directly associated with the rejection of the work. If the task is not accepted the payment to the worker is denied and reasons for rejecting the tasks should be clear so that the worker doesn't get confused.
+
+%\subsection{Payment for the Worker}Amazon Mechanical Turk suggests that each worker gets \$6/hour as wage. Thus we need to estimate how much time a task may take to complete and based on that we have to specify the payment for each task. Our experience indicates that a better payment brings more serious workers who usually provide cleaner data which is more reliable. 
 
 %We may study this issue while we do multiple turk experiments.
 
-\subsection{Managing Worker} Pay bonus, appreciate worker by sending email, block worker etc.
+\subsection{Managing Worker} Accepting the task and processing the payment in a timely manner may make a good impression for the task they just did. This is helpful for the recruiter's reputation so that in future the recruiter can get the job done faster. Since the MTurk worker will always  prefer the tasks posted by a good recruiter. Besides this we provide some good worker management strategy as below.
+
+\begin{itemize}
+
+\item Pay bonus
+
+\item Appreciate work
+
+\item Reply query email promptly
+
+\item Block workers if necessary
+
+ \end{itemize}
 
 \section{Turk Data Quality} \label{sec:turk_data}
 
@@ -392,8 +411,15 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
 
 %Since data are collected through web interface it is possible to have the selection bias in the turk experiment we did. In this section we intend to analyze to what extent this selection bias has occurred and how we can adjust for this.
 
+There is always a concern of selection biases with any online study. First of all in online study only those who use internet can participate. For a turk experiment the pool of participants even shrinks further to those who work in MTurk system. 
 
-Time of the task may recruit from a specific geographical location
+Other biases may be due to the time the task is posted online, setting up specific qualification or even payment amount. A task which is posted at noon in central time in USA is less likely to be seen from Indian region since that is the midnight in that area. This may produce an artificial filter to the data which may come only from certain geographical location. If a specific qualification of the task is required not all the workers are able to view and perform that task. Also, if payment amount is very small many worker may not even review the task.  
+
+While selection bias is very important for some experimental study it is not much of an issue for experiment with lineups. If we examine the diversity of the participants in \ref{majumder:turk} we see that the turk data provide data from a very diverse population. Moreover it is observed in XXX that diversity is not much important for lineups as the human factors do not have any practical impact on the probability of correctly identifying the data plot in the lineup. 
+
+
+
+ may recruit from a specific geographical location
 
 Setting up qualification may allow certain workers to do the task
 
