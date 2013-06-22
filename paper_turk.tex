@@ -51,7 +51,7 @@ A lineup is shown in Figure~\ref{fig:lineup_turk} where the observed scatterplot
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=6.5in]{plot_turk2_100_450_12_3.png} 
-   \caption{A lineup of 20 scatter plots with least square line overlaid. Which of these plots shows the steepest slope?.}
+   \caption{A lineup of 20 scatter plots with least square line overlaid. Which of these plots shows the steepest slope? Answer to this question can be found at the end of conclusion.}
    \label{fig:lineup_turk}
 \end{figure}
 
@@ -316,25 +316,25 @@ To prevent missing information and invalid input client side controlled is appli
 
 \begin{itemize}
 
-\item The number of worker to recruit has to be provided so that the turk task is live until specific number of people do the task. This is related to the sample size we intend to collect on each lineup. 
+\item The number of worker to recruit has to be provided so that the turk task remain open until specific number of people do the task. This is related to the sample size of the data we intend to collect on each lineup. 
 
-\item Time allowed to finish each task has to be specified. Once a specific time period is set up the task will be expired after that time and the worker can't be submit it anymore. The worker has to finish the task by that time period. 
+\item Time allowed to finish each task has to be specified. Once a specific time period is set up the task will be expired after that time and the worker can't submit it anymore. The worker has to finish the task by that time period once he or she agrees to do the task. 
 
 \item Qualifications needed to view and perform the task may be specified so that only desired participants can do the task. It depends on the population of interest as per the experimental design. For example one may only allow workers who have a history of doing at least 100 tasks and out of which a specific percent of tasks have been approved by other recruiters. 
 
-\item Duration of the task is the period of time the task is available for workers to do. If the time period is over the task will not be available no matter whether all the required number of workers have participated or not. This duration is important as each payment has to be finalized by this time period. Otherwise, all the workers will be paid automatically after this time period no matter if the the task is accepted or rejected. Some times it is helpful to set up a longer duration and see how long it takes before all the tasks get completed.
+\item Duration of the task is the period of time the task is available for workers to do. If the time period is over the task will not be available no matter whether all the required number of workers have participated or not. This duration is important as each payment has to be finalized by this time period. Otherwise, all the workers will be paid automatically after this time period no matter whether the the task is accepted or rejected. Some times it is helpful to set up a longer duration and see how long it takes before all the tasks get completed.
 
 \item Finally, the workers are redirected to the web site designed for lineup evaluation. MTurk workers should be informed clearly that they will be redirected to a new website from where they will provide feedback. The whole task including the instructions and procedures in the web application should be presented as per the task plan described in Section \ref{sec:task_plan}.
 
 \end{itemize}
 
-\subsection{Accepting or Rejecting the Task} There is no hard and fast rule to follow while accepting or rejecting the tasks submitted by the MTurk workers. Since MTurk task are very simple and payment amount is very small the general convention is to pay every worker who submitted the task properly as instructed. The task should not be rejected based on the quality of work unless it prominently demonstrates that the task was not performed properly and irrelevant or garbage data were provided. It is very unusual to get garbage data from MTurk workers since they are well aware that this conduct may harm their reputation as a worker. So, proper caution needs to be taken while rejecting a task. Some times may happen that the workers provided crap data unintentionally. In that case we recommend to accept the task and pay for trying the task.
+\subsection{Accepting or Rejecting the Task} There is no hard and fast rule to follow while accepting or rejecting the tasks submitted by the MTurk workers. Since MTurk task are very simple and payment amount is very small the general convention is to pay every worker who submitted the task properly as instructed. The task should not be rejected based on the quality of work unless it clearly demonstrates that the task was not performed properly and irrelevant or garbage data were provided. It is very unusual to get garbage data from MTurk workers since they are well aware that this conduct may harm their reputation as a worker. So, proper caution needs to be taken while rejecting a task. Some times it may happen that the workers provided invalid data unintentionally. In that case we recommend to accept the task and pay for trying the task.
 
 It is very difficult to detect whether a worker is giving data by properly inspecting the lineup or just at random. This can be monitored by putting a test lineup which is very easy to evaluate. The worker can be informed that there will be a test lineup which need to be correctly evaluated to make sure the task is accepted. This may prevent worker giving random data and it is easier to accept or reject tasks based on this criteria.  
 
 There may be mistakes made by the worker such as giving a wrong ID or a invalid input even though the whole task is properly done as instructed. In this case the task should be accepted and payment should be made. This encourages the workers and they appreciate the recruiters sincerity and provide good feedbacks. This does not happen frequently if qualified workers are recruited such as who had at least a certain number of percentage of tasks approved previously. 
 
-Other criteria to accept or reject the tasks may be more complex based on the experimental needs. For example one may accept the task if certain percentage of the easy lineups are correctly evaluated. This criteria can be used if multiple number of easy lineups are shown for evaluation. For example if there are 3 easy lineups and none of them were correctly evaluated it is most likely that the feedbacks were provided randomly. Some times it may happen that out of 10 lineups 3 were correctly evaluated but all the three easy lineups were wrongly evaluated. In that case the payment should be made since it is very unlikely that out of 10 lineups a total of 3 lineups would be correctly evaluated by just random response.
+Other criteria to accept or reject the tasks may be more complex based on the experimental needs. For example one may accept the task if certain percentage of the easy lineups are correctly evaluated. This criteria can be used if multiple number of easy lineups are shown for evaluation. For example if there are 3 easy lineups and none of them were correctly evaluated it is most likely that the feedbacks were provided randomly. Some times it may happen that out of 10 lineups 3 difficult lineups were correctly evaluated but all the three easy lineups were wrongly evaluated. In that case the payment should be made since it is very unlikely that out of 10 lineups a total of 3 lineups would be correctly evaluated by just random response.
 %These issues would be addressed in our future work based on the several turk experiments that we intend to carry out.
 
 The payment of the workers is directly associated with the rejection of the work. If the task is not accepted the payment to the worker is denied and reasons for rejecting the tasks should be clear so that the worker doesn't get confused.
@@ -343,7 +343,7 @@ The payment of the workers is directly associated with the rejection of the work
 
 %We may study this issue while we do multiple turk experiments.
 
-\subsection{Managing Worker} Accepting the task and processing the payment in a timely manner may make a good impression for the task they just did. This is helpful for the recruiter's reputation so that in future the recruiter can get the job done faster. Since the MTurk worker will always  prefer the tasks posted by a good recruiter. Besides this we provide some good worker management strategy as below.
+\subsection{Managing Worker} Accepting the task and processing the payment in a timely manner may make a good impression about the task and the recruiter. This is helpful for the recruiter's reputation so that in future the recruiter can get the job done faster. Since the MTurk worker will always  prefer the tasks posted by a good recruiter. Besides this we provide some good worker management strategy as below.
 
 \begin{itemize}
 
@@ -391,7 +391,7 @@ The hourly payment rates shown in Table~\ref{tbl:mturk} are based on the time pe
 
 %In this section we intend to analyze the performance of the experiments we did using Amazon Mechanical turk. We have feed back data for the similar plots from both turk workers as well as from the people who regularly participates in the graphics group meeting of our department. We consider later participants as more knowledgeable and trained in seeing pattern in statistical plots. We can use these data to evaluate the performance of the general participants from around the world.
 
-The duration of an experiment to finish depends on the time it was posted and the number of interested workers available on that time. It also depends on how attractive the experiment is in terms of appearance and payment. Even though the payment was similar for all the experiments, ee observed some experiments were finished much faster than others. Experiment 8 took long time to finish which is about 77 hours for 100 tasks while experiment 7 took only 4.86 hours to finish 100 task.
+The duration of an experiment to finish depends on the time it was posted and the number of interested workers available on that time. It also depends on how attractive the experiment is in terms of appearance and payment. Even though the payment was similar for all the experiments, we observed some experiments were finished much faster than others. Experiment 8 took long time to finish which is about 77 hours for 100 tasks while experiment 7 took only 4.86 hours to finish 100 task.
 
 Figure~\ref{fig:task_duration} shows the comparative durations of time for 100 tasks in each of the experiment. Even though experiment 8 (sine illusion) took longer to finish it got the least number of rejected tasks.
 
@@ -442,7 +442,7 @@ There is always a concern of selection biases with any online study. First of al
 
 Other biases may be due to the time the task is posted online, setting up specific qualification or even payment amount. A task which is posted at noon in central time in USA is less likely to be seen from Indian region since that is the midnight in that area. This may produce an artificial filter to the data which may come only from certain geographical location. If a specific qualification of the task is required not all the workers are able to view and perform that task. Also, if payment amount is very small many worker may not even review the task.  
 
-While selection bias may influence the results of some experimental study it is not much of an issue for experiment with lineups. In terms of demographic factors and geographic location MTurk provides much diversity in the participants as we see in \cite{majumder:socio}. Moreover it is observed that the human factors do not have any practical impact on the probability of correctly identifying the data plot in the lineup. 
+While selection bias may influence the results of some experimental study it is not much of an issue for experiment with lineups. In terms of demographic factors and geographic location MTurk provides much diversity in the participants as studied by \cite{majumder:socio}. Moreover it is observed that the human factors do not have any practical impact on the probability of correctly identifying the data plot in the lineup. 
 
 
 
@@ -453,13 +453,15 @@ While selection bias may influence the results of some experimental study it is 
 %Payment amount may affect the duration of the experiment which may avoid diversity in the geographical locations.
 
 
-\section{Conclusion} This paper presents a complete solution to the problem of designing a simulation experiment for lineup and recruiting people to get the lineups evaluated. The online application design provides features to control how the multiple lineups can be presented to an observer. Scalable Vector Graphics (SVG) are used for lineup so that observer can click on the lineup to pick certain plot. This also made the multiple plot selection from a lineup easier and convenient. Multiple online experiments are done using this web application and result suggests that the application worked as planned.
+\section{Conclusion} This paper presents a complete solution to the problem of designing a simulation experiment for lineup and recruiting people to get the lineups evaluated. The online application design provides features to control how the multiple lineups can be presented to an observer. Scalable Vector Graphics (SVG) are used for lineup so that observer can click on the lineup to pick certain plot. This also made the multiple plot selection from a lineup easier and convenient. The web site is used for multiple online experiments.
 
 One of the main features of the web application is that it produces simple task for the worker but still retains many flexibilities to the researcher who need lineups to be evaluated as per complex experimental requirement. The design of this application allows recruiting people from any source not necessarily just from MTurk. The web application is now hosted on Iowa State University public domain \citep{majumder:turk} and any number of experiments can be done through this web site without changing the core of this application.
 
 The next direction of this work is to make a complete package so that anyone can reproduce this web application, customize according to their need and run the MTurk experiments as part of their research that involves lineups. This will also help lineup protocol to be used frequently since it will provide an ease of its use in making inferential decisions.
 
-We also intend to set up a web application for public use where researcher can put their lineup for online evaluation. The observer can be recruited from MTurk or any other source including local lab participants. 
+We also intend to set up a web application for public use where researcher can put their lineup for online evaluation. The observer can be recruited from MTurk or any other sources including local lab participants. 
+
+\paragraph{Answer to the question in Figure~\ref{fig:lineup_turk} is 2.}
 
 
 %
