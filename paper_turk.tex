@@ -109,7 +109,7 @@ Figure \ref{fig:turk_work_flow} shows how the plan works. First an MTurk task is
        \label{fig:turk_work_flow}
 \end{figure}
 
-MTurk provides workers who usually do the simple tasks available for them. Thus, for lineups to be evaluated a simple task needs to be created through MTurk. This may be a challenge for the researchers who want to make statistical decisions based on lineups or need to study the power of visual tests. They need a system that can provide an easy solution to this challenge while giving them flexibilities how they want to present the lineups. This paper provides a complete solution to this. It is organized the way a researcher may work with the experiments related to lineups and like to get feedback data from the observer. Section \ref{sec:turk_exp} presents the detailed description of an experiment with lineups and things to consider while creating a turk task. Section \ref{sec:web_application} presents the design of an web application to get lineups evaluated with additional flexibilities and options that may not be possible through MTurk. Section \ref{sec:turk_task} describes how to create an MTurk task, mange workers and process payments. Finally Section \ref{sec:turk_data} presents some data obtained from various experiments done through the web application and discusses about the quality of the data.
+MTurk provides workers who usually do the simple tasks available for them. Thus, for lineups to be evaluated a simple task needs to be created through MTurk. This may be a challenge for the researchers who want to make statistical decisions based on lineups or need to study the power of visual tests. They need a system that can provide an easy solution to this challenge while giving them flexibilities how they want to present the lineups. This paper provides a complete solution to this. It is organized the way a researcher may work with the experiments related to lineups and like to get feedback data from the observer. Section \ref{sec:turk_exp} presents the detailed description of an experiment with lineups and things to consider while creating a turk task. Section \ref{sec:web_application} presents the design of an web application to get lineups evaluated with additional flexibilities and options that may not be possible through MTurk system. Section \ref{sec:turk_task} describes how to create an MTurk task, mange workers and process payments. Finally Section \ref{sec:turk_data} presents some data obtained from various experiments done through the web application and discusses about the quality of the data.
 
 
 \section{Experiment Design} \label{sec:turk_exp}
@@ -206,9 +206,9 @@ It is helpful if some example lineups are presented with the experimental descri
 
 \section{Web Application for Turk Experiment} \label{sec:web_application}
 
-A web site is developed to get lineups evaluated by human observers \citep{majumder:turk}. It provides all the features needed for a simulation experiment with lineups but yet remains simple for the online workers. This section describes the technical details of the site. 
+A web site is developed to get lineups evaluated by human observers \citep{majumder:turk}. It provides all the features needed for a simulation experiment with lineups but yet remains simple enough for the online workers to provide feedbacks. This section describes the technical details of the site. 
 
-The web application is built using server side scripting language PHP embedded in HTML. JavaScript is used to control the client side work flow such as preventing missing information, showing messages etc. MySQL database is used to store data for dynamic presentation of lineup and recording observer feedbacks. The application also records the ip address of the observer's machine and the time of each display of lineup and its evaluation.  
+The web application is built using server side scripting language PHP embedded in HTML. JavaScript is used to control the client side work flow such as preventing missing information, showing instructional messages etc. MySQL database is used to store data for dynamic presentation of lineup and recording observer feedbacks. The application also records the ip address of the observer's machine and the times at which each lineup is displayed and evaluation is received.  
 
 %We developed a web site to run the Amazon Mechanical Turk experiments.  PHP scripting language is used and embedded with HTML for designing the web site. Javascript is used for validating the input data and producing warning message.  We use  Amazon Mechanical Turk web site to recruit the participants and direct them to our web site to actually participate in the survey. This has allowed us to get the data directly in a secure way from the web and we don't have to depend on the Mechanical Turk web site to transfer data to our server. 
 
@@ -225,7 +225,7 @@ Keeping these in mind, two web forms are designed to collect information from th
        \label{fig:turk_web}
 \end{figure}
 
-One of the nice features of the form in Figure \ref{fig:turk_web} is the use of Scalable Vector Graphics (SVG) for lineup which enables an observer to give feedback with the ease of just a mouse click. If the observer changes mind he or she can click the plot again and deselect it. If needed multiple selection of plots can be allowed, order of selection and deselection can be recorded with time taken for each action. Thats what we meant by saying it is complex in design. 
+One of the nice features of the form in Figure \ref{fig:turk_web} is the use of Scalable Vector Graphics (SVG) for lineup which enables an observer to give feedback with the ease of just a mouse click. If the observer changes mind he or she can click the plot again and deselect it. If needed multiple selection of plots can be allowed, order of selection and deselection can be recorded with time taken for each action. That is what we meant by saying it is complex in design. 
 
 It is possible to let workers see the statistics of their total feedbacks with number of correct evaluations. This feature can be opted out easily if not necessary. The workers have to provide their turk ID and for next evaluation they don't have to type it again. This allows the worker give feedback using only mouse click. Thats what we meant by saying it is simple for turk worker.
 
@@ -234,11 +234,11 @@ Once the data is submitted a feedback can be provided whether their choice was c
 \begin{figure}[hbtp]
    \centering
        \scalebox{.4}{\includegraphics{turk_web_feedback.png}}
-       \caption{The turk workers are given feedbacks whether their evaluation for each lineup was correct or not. This works as an incentive for the worker to work more enthusiastically. To ensure the payment, the turk workers have to provide some information using this form.}
+       \caption{The turk workers are given feedbacks whether their evaluation for each lineup was correct or not. This works as an incentive for the worker to work more enthusiastically. To ensure the payment, the turk workers have to provide their demographic information using this form.}
        \label{fig:turk_web_feedback}
 \end{figure}
 
-Each worker is shown some specific number of lineups for evaluation. These lineups are randomly selected from a pool of lineups designed for evaluations. The algorithm for how the lineups should be selected to show and what would be the order of display is implemented in the form shown in Figure \ref{fig:turk_web}. Also there is a check for invalid or missing information which is implemented using javascript. If users try to go forward without giving any feedback they are not allowed to do that showing a warning message.
+Each worker is shown some specific number of lineups for evaluation. These lineups are randomly selected from a pool of lineups designed for evaluations. The algorithm of how the lineups should be selected to show and what would be the order of display is implemented in the form shown in Figure \ref{fig:turk_web}. Also there is a check for invalid or missing information which is implemented using javascript. If users try to go forward without giving any feedback they are not allowed to do that showing a warning message.
 
 %After the evaluation is recorded on a lineup through form shown in Figure \ref{fig:turk_web} another form shown in Figure \ref{fig:turk_web_feedback} is used to give feedback to the turk users whether they correctly identifies the true plot and how many evaluations are recorded from the users. 
 
@@ -252,7 +252,7 @@ Each worker is shown some specific number of lineups for evaluation. These lineu
        \label{fig:turk_database_design}
 \end{figure}
 
-The primary key in feedback table is produced by nick\_name and pic\_id since no workers are allowed to provide multiple feedbacks on the same lineup. In all other tables the first field names shown in Figure~\ref{fig:turk_database_design} are the primary keys. For the implementation of the web application we used MySQL database located on a local server.
+The primary key in feedback table is produced by nick\_name and pic\_id since no workers are allowed to provide multiple feedbacks on the same lineup. In all other tables the first field names shown in Figure~\ref{fig:turk_database_design} are the primary keys. For the implementation of the web application we used MySQL database located on a local server securely accessible from public locations.
 
 \subsection{Data collection} 
 
@@ -303,7 +303,7 @@ Time taken & Time taken for each response\\
 
 Since the experiment is based on online participations and related to monetary affairs, it is important to maintain certain security for the data collection. The attempt to provide random data or irrelevant information as well as harmful actions need to be prevented.  Some cautious attempts are taken to add security to the data. Server side scripting language PHP is used to connect to database and access or save data. For transferring data from one form to another PHP session variables are used. Cookies are avoided carefully so that no important informations are saved in the cookies. 
 
-To prevent missing information and invalid input client side controlled is applied using JavaScripts. Most of the cases options or combo boxes are used instead of free text boxes to avoid invalid input. This also made the task easy to perform and convenient for the workers. For controlling some flow of the work such as showing various messages, JavaScripts are used as well. Careful consideration are made so that no important informations are stored in the java variable or function that could easily be revealed.
+To prevent missing information and invalid input client side control is applied using JavaScripts. Most of the cases options or combo boxes are used instead of free text boxes to avoid invalid input. This also made the task easy to perform and convenient for the workers. For controlling some flow of the work such as showing various messages, JavaScripts are used as well. Careful consideration are made so that no important informations are stored in the java variable or function that could easily be revealed.
 
 
 \section{Managing Turk Task}\label{sec:turk_task} \cite{turk} Mechanical Turk website provides various features that are helpful to maintain and organize the task and manage the workers. Creating, posting, accepting or rejecting tasks and processing payment are done from the MTurk system. It is also possible to screen out workers as needed. For example, none will be interested to recruit people who have a very bad reputation. This information can be obtained from each worker's previous work history of total number of accepted task out of total number of submitted task. The web application we developed is for presenting lineups in a flexible way the researcher may want  as per the experimental design and collecting data. To get people to the web application we need to design a turk task in MTurk system.
