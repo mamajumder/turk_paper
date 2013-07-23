@@ -353,13 +353,13 @@ The payment of the workers is directly associated with the rejection of the work
 
 \item Some workers may email to learn more about the experiment. Some times they may face technical troubles which needs to be taken care of promptly. A timely communication with worker is necessary and emails should be responded as  promptly as possible. It is important as they can report any trouble to IRB which may create unpleasant issues with the human subject experiment.
 
-\item It is recommended to reject the task if it is not submitted as requirement. Some times this may produce dispute and the workers may become angry and demand payment. We recommend to be strict to the decision and for any further administrative control there is an option to block the worker if necessary. After all this is a work place and it is expected that the worker maintain the work place environment.
+\item It is recommended to reject the task if it is not submitted as required. Some times this may produce dispute and the workers may become upset and still demand payment. We recommend to be strict to the decision and for any further administrative control there is an option to block the worker if necessary. After all this is a work place and it is expected that the worker maintain the work place environment.
 
  \end{itemize}
 
 \section{Turk Experiment Data} \label{sec:turk_data}
 
-We have performed 10 different experiments using the web application described in Section~\ref{sec:web_application}. Table~\ref{tbl:mturk} presents the tasks and payment details of all the 10 experiments. Experiment 1 was the first experiment and the largest number of tasks were rejected in that experiment. But this experiment provides valuable information about how to modify the web site to avoid invalid input and missing information. Thus in the later experiments we did not see a lot of tasks to get rejected.
+We have performed 10 different experiments using the web application described in Section~\ref{sec:web_application}. Table~\ref{tbl:mturk} presents the tasks and payment details of all the 10 experiments. Experiment 1 was the first experiment and the largest number of tasks were rejected in that experiment. But this experiment provides valuable information about how to upgrade the web site to avoid invalid input and missing information. Thus in the later experiments we did not see a lot of tasks to get rejected.
 
 \begin{table}[hbtp]
 \caption{Amazon mechanical turk experiments and their properties. Duration in hours per 100 tasks show the popularity of some tasks compared to others.}
@@ -387,13 +387,13 @@ Serial & description & submitted & rejected & time(min) & Actual & 100 task& \$/
 \label{tbl:mturk}
 \end{table}
 
-The hourly payment rates shown in Table~\ref{tbl:mturk} are based on the time periods beginning from the times the tasks were accepted by the worker to the time they were submitted to the MTurk system. It is different from the time taken to actually evaluate the lineups. Since in between the workers need to go to the web application, get the codes after they finish the tasks and finally put the code to MTurk system. The pay rate is almost similar for all the experiment except for experiment 2. The payment was decided based on the MTurk standard of \$6 per hour and we can see that for experiment 2. Based on the experiment 1 and 2, they payment for each task was fixed to \$1, but in practice, it appears to be much less than that. It is because, workers spent long time in between lineups.
+The hourly payment rates shown in Table~\ref{tbl:mturk} are based on the time periods beginning from the times the tasks were accepted by the worker to the time they were submitted to the MTurk system. It is different from the time taken to actually evaluate the lineups. Since in between the workers need to go to the web application, get the codes after they finish the tasks and finally put the code to MTurk system. The pay rate is almost similar for all the experiment except for experiment 2. The payment amount was decided based on the MTurk standard of \$6 per hour and we can see that for experiment 2. Based on the experiment 1 and 2, the payment for each task was fixed to \$1, but in practice, it appears to be much less than that. It is because, workers spent long time in between lineups.
 
 %In this section we intend to analyze the performance of the experiments we did using Amazon Mechanical turk. We have feed back data for the similar plots from both turk workers as well as from the people who regularly participates in the graphics group meeting of our department. We consider later participants as more knowledgeable and trained in seeing pattern in statistical plots. We can use these data to evaluate the performance of the general participants from around the world.
 
 The duration of an experiment to finish depends on the time it was posted and the number of interested workers available on that time. It also depends on how attractive the experiment is in terms of appearance and payment. Even though the payment was similar for all the experiments, we observed some experiments were finished much faster than others. Experiment 8 took long time to finish which is about 77 hours for 100 tasks while experiment 7 took only 4.86 hours to finish 100 task.
 
-Figure~\ref{fig:task_duration} shows the comparative durations of time for 100 tasks in each of the experiment. Even though experiment 8 (sine illusion) took longer to finish it got the least number of rejected tasks.
+Figure~\ref{fig:task_duration} shows the comparative durations of time for 100 tasks in each of the experiments. Even though experiment 8 (sine illusion) took longer to finish it got the least number of rejected tasks.
 
 
 
@@ -453,11 +453,11 @@ While selection bias may influence the results of some experimental study it is 
 %Payment amount may affect the duration of the experiment which may avoid diversity in the geographical locations.
 
 
-\section{Conclusion} This paper presents a complete solution to the problem of designing a simulation experiment for lineup and recruiting people to get the lineups evaluated. The online application design provides features to control how the multiple lineups can be presented to an observer. Scalable Vector Graphics (SVG) are used for lineup so that observer can click on the lineup to pick certain plot. This also made the multiple plot selection from a lineup easier and convenient. The web site is used for multiple online experiments.
+\section{Conclusion} This paper presents a complete solution to the problem of designing a simulation experiment for lineup and recruiting people to get the lineups evaluated. The online application design provides features to control how the multiple lineups can be presented to an observer. Scalable Vector Graphics (SVG) are used for lineup so that observer can click on the lineup to pick certain plot. This also made the multiple plot selections from a lineup easier and convenient. The web site is used for multiple online experiments.
 
 One of the main features of the web application is that it produces simple task for the worker but still retains many flexibilities to the researcher who need lineups to be evaluated as per complex experimental requirement. The design of this application allows recruiting people from any source not necessarily just from MTurk. The web application is now hosted on Iowa State University public domain \citep{majumder:turk} and any number of experiments can be done through this web site without changing the core of this application.
 
-The next direction of this work is to make a complete package so that anyone can reproduce this web application, customize according to their need and run the MTurk experiments as part of their research that involves lineups. This will also help lineup protocol to be used frequently since it will provide an ease of its use in making inferential decisions.
+The next direction of this work is to make a complete package so that anyone can reproduce this web application, customize according to their needs and run the MTurk experiments as part of their research that involves lineups. This will also help lineup protocol to be used frequently in making inferential decisions since it will provide the required flexibilities and convenience.
 
 We also intend to set up a web application for public use where researcher can put their lineup for online evaluation. The observer can be recruited from MTurk or any other sources including local lab participants. 
 
